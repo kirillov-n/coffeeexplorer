@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'coffeeexplorer_app.apps.CoffeeexplorerAppConfig',
     'users',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

@@ -19,15 +19,16 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         "OAR": "On a rest"
 
     }
-    user_id = models.BigAutoField("Id пользователя", primary_key=True, unique=True)
-    email = models.EmailField("Email адрес", unique=True)
-    nickname = models.CharField("Никнейм")
-    sex = models.CharField("Пол", choices=SEX_CHOICES)
-    birthdate = models.DateField("Дата рождения")
-    occupation = models.CharField("Занятость", choices=OCCUPATION_CHOICES)
-    date_joined = models.DateTimeField("Дата регистрации", default=timezone.now)
-    favourites = models.ManyToManyField("Избранное", Establishments)
-    is_staff = models.BooleanField("Бизнес аккаунт", default=False)
+    userID = models.BigAutoField(verbose_name="Id пользователя", primary_key=True, unique=True)
+    email = models.EmailField(verbose_name="Email адрес", unique=True)
+    nickname = models.CharField(verbose_name="Никнейм")
+    sex = models.CharField(verbose_name="Пол", choices=SEX_CHOICES)
+    birthdate = models.DateField(verbose_name="Дата рождения")
+    occupation = models.CharField(verbose_name="Занятость", choices=OCCUPATION_CHOICES)
+    date_joined = models.DateTimeField(verbose_name="Дата регистрации", auto_now_add=True)
+    favourites = models.ManyToManyField(Establishments, verbose_name="Избранное")  # многие ко многим
+    is_business = models.BooleanField(verbose_name="Бизнес аккаунт", default=False)
+    is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
     USERNAME_FIELD = "email"
@@ -40,8 +41,21 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 
 class Posts(models.Model):
-    Post_id = models.AutoField(primary_key=True)
+    PostID = models.AutoField(verbose_name="ID поста", primary_key=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, verbose_name="Пользователь")
+    establishment = models.ForeignKey(Establishments, on_delete=models.CASCADE, verbose_name="Заведение")
+    picture = models.ImageField(verbose_name="Изображение", upload_to="uploads/")
+    rating = models.FloatField(verbose_name="Рейтинг")
+    body = models.TextField(verbose_name="Текст", max_length=200)
+    time_created = models.DateTimeField(verbose_name="Время создания", auto_now_add=True)
+    time_edited = models.DateTimeField(verbose_name="Время изменения", auto_now=True)
 
 
 class Comments(models.Model):
-    comment_id = models.AutoField(primary_key=True)
+    commentID = models.AutoField(verbose_name="ID комментария", primary_key=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, verbose_name="Пользователь")
+    post = models.ForeignKey(Posts, on_delete=models.CASCADE, verbose_name="Пост")
+    body = models.TextField(verbose_name="Текст", max_length=200)
+    time_created = models.DateTimeField(verbose_name="Время создания", auto_now_add=True)
+    time_edited = models.DateTimeField(verbose_name="Время изменения", auto_now=True)
+
