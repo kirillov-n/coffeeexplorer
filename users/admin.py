@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser
+from .forms import *
+from .models import *
 
 
 class CustomUserAdmin(UserAdmin):
@@ -19,7 +19,8 @@ class CustomUserAdmin(UserAdmin):
         (None, {
             "classes": ("wide",),
             "fields": (
-                "email", "nickname", "sex", "birthdate", "occupation", "is_business", "password1", "password2", "is_staff",
+                "email", "nickname", "sex", "birthdate", "occupation", "is_business", "password1", "password2",
+                "is_staff",
                 "is_active", "groups", "user_permissions"
             )}
          ),
@@ -28,4 +29,46 @@ class CustomUserAdmin(UserAdmin):
     ordering = ("email",)
 
 
+class PostsAdmin(admin.ModelAdmin):
+    add_form = PostsCreationForm
+    form = PostsChangeForm
+    model = Posts
+    list_display = ("user", "establishment", "picture", "rating", "body", "time_created", "time_edited",)
+    list_filter = ("user", "establishment", "picture", "rating", "body", "time_created", "time_edited",)
+    fieldsets = (
+        (None, {"fields": ("user", "establishment", "picture", "rating", "body")}),
+    )
+    add_fieldsets = (
+        (None, {
+            "classes": ("wide",),
+            "fields": (
+                "user", "establishment", "picture", "rating", "body")}
+         ),
+    )
+    search_fields = ("user__email",)
+    ordering = ("user__email",)
+
+
+class CommentsAdmin(admin.ModelAdmin):
+    add_form = CommentsCreationForm
+    form = CommentsChangeForm
+    model = Comments
+    list_display = ("user", "post", "body", "time_created", "time_edited")
+    list_filter = ("user", "post",)
+    fieldsets = (
+        (None, {"fields": ("user", "post", "body")}),
+    )
+    add_fieldsets = (
+        (None, {
+            "classes": ("wide",),
+            "fields": (
+                "user", "post", "body")}
+         ),
+    )
+    search_fields = ("user__email",)
+    ordering = ("user__email",)
+
+
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(Posts, PostsAdmin)
+admin.site.register(Comments, CommentsAdmin)
