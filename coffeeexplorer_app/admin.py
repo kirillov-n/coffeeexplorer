@@ -28,7 +28,6 @@ class MetroStationsAdmin(admin.ModelAdmin):
     form = MetroStationsChangeForm
     model = MetroStations
     list_display = ("name", "city", "longitude", "latitude",)
-    list_filter = ("name", "city", "longitude", "latitude",)
     fieldsets = (
         (None, {"fields": ("name", "city", "longitude", "latitude",)}),
     )
@@ -65,7 +64,9 @@ class EstablishmentsAdmin(admin.ModelAdmin):
     form = EstablishmentsChangeForm
     model = Establishments
     list_display = ("name", "address", "description", "picture", "avg_bill", "veg_positions", "alt_brewing", "alt_milk",
-                    "pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work",)
+                    "pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work", "close")
+    list_filter = ("name", "address", "avg_bill", "veg_positions", "alt_brewing", "alt_milk",
+                   "pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work", "close")
     fieldsets = (
         (None, {'fields': ("name", "address", "description", "picture", "avg_bill", "veg_positions", "alt_brewing",
                            "alt_milk", "pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work",)}),

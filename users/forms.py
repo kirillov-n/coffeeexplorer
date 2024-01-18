@@ -27,7 +27,7 @@ class PostsCreationForm(ModelForm):
 class PostsChangeForm(ModelForm):
     class Meta:
         model = Posts
-        fields = ("user", "establishment", "picture", "rating", "body",)
+        fields = ("user", "establishment", "picture", "rating",)
 
 
 class CommentsCreationForm(ModelForm):

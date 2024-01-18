@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
 
 
@@ -51,7 +52,6 @@ class Establishments(models.Model):
     name = models.CharField(verbose_name="Название заведения", max_length=100)
     address = models.ForeignKey(Address, on_delete=models.PROTECT, verbose_name="Адрес")
     description = models.TextField(verbose_name="Описание", max_length=200)
-    # picture = models.URLField(verbose_name="Изображение")
     picture = models.ImageField(verbose_name="Изображение", upload_to="uploads/establishments")
     avg_bill = models.FloatField(verbose_name="Средний чек")
     veg_positions = models.BooleanField(verbose_name="Наличие вегетарианских позиций")
@@ -63,6 +63,7 @@ class Establishments(models.Model):
     decaf = models.BooleanField(verbose_name="Наличие декафа")
     wifi = models.BooleanField(verbose_name="Наличие wifi")
     place_for_work = models.BooleanField(verbose_name="Наличие мест для работы")
+    close = ArrayField(models.IntegerField(), null=True, blank=True, verbose_name="Похожие заведения")
 
     class Meta:
         verbose_name = "Заведение"
