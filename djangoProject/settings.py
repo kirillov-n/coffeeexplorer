@@ -85,14 +85,7 @@ WSGI_APPLICATION = 'djangoProject.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'coffeeexplorer_db',
-        'USER': env('MYAPP_DB_USER'),
-        'PASSWORD': env('MYAPP_DB_PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': '',
-    }
+    'default': env.db(),
 }
 
 AUTH_USER_MODEL = "users.CustomUser"
