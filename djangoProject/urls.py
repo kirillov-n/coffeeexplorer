@@ -30,7 +30,5 @@ from users import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/users/', include('users.urls')),
-    path('', include('frontend.urls')),
 ]
