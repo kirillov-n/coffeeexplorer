@@ -34,6 +34,8 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
+from .pagination import CustomPagination
+
 ALLOWED_HOSTS = []
 
 REST_FRAMEWORK = {
@@ -42,11 +44,9 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.CustomPagination',
     'PAGE_SIZE': 10
 }
-
-# CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -61,6 +61,8 @@ INSTALLED_APPS = [
     'users',
     'django_extensions',
     'rest_framework',
+    'reactapp',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +75,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
+
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'djangoProject.urls'
 
@@ -140,7 +145,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # MEDIA_URL = '/uploads/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')

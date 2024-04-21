@@ -31,4 +31,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include(router.urls)),
     path('api/users/', include('users.urls')),
+    path('api/coffeeexplorer_app/', include('coffeeexplorer_app.urls')),
 ]

@@ -1,13 +1,14 @@
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import User
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from .models import *
 
 User = get_user_model()
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ["userID", "email", "nickname", "sex", "birthdate", "occupation", "is_business", "password"]
+        fields = ["userID", "email", "nickname", "sex", "birthdate", "occupation", "is_business", "password", "date_joined"]
     def create(self, validated_data):
         user = User(
             email=validated_data['email'],
@@ -20,9 +21,15 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
+    
 
-
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
+class PostSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Group
-        fields = ["url", "name"]
+        model = Posts
+        fields = ["PostID", "user", "establishment", "picture", "rating", "body", "time_created", "time_edited"]
+
+
+class CommentSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Comments
+        fields = ["commentID", "user", "post", "body", "time_created", "time_edited"]

@@ -1,8 +1,9 @@
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import User
 from rest_framework import permissions, viewsets
-
-from users.serializers import GroupSerializer, UserSerializer
+from .models import *
+from users.serializers import *
 from django.contrib.auth import get_user_model
+
 
 User = get_user_model()
 class UserViewSet(viewsets.ModelViewSet):
@@ -11,13 +12,22 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
 
-class GroupViewSet(viewsets.ModelViewSet):
+class PostViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows groups to be viewed or edited.
+    API endpoint that allows posts to be viewed or edited.
     """
-    queryset = Group.objects.all().order_by('name')
-    serializer_class = GroupSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    queryset = Posts.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [permissions.AllowAny]
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows comments to be viewed or edited.
+    """
+    queryset = Comments.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [permissions.AllowAny]
