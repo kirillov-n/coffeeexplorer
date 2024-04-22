@@ -1,5 +1,6 @@
 import {Container, Row, Col} from "reactstrap";
 import ListUsers from "../appListUsers/ListUsers";
+import Map from "../appMap/Map";
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import ModalUser from "../appModalUser/ModalUser";
@@ -21,20 +22,23 @@ const Home = () => {
     };
 
     return (
-        <Container style={{marginTop: "20px"}}>
-            <Row>
-                <Col>
-                    <ListUsers users={users} resetState={resetState} newUser={false}/>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <ModalUser
-                    create={true}
-                    resetState={resetState}
-                    newUser={true}/>
-                </Col>
-            </Row>
+        // <Container style={{marginTop: "20px"}}>
+        //     <Row>
+        //         <Col>
+        //             <ListUsers users={users} resetState={resetState} newUser={false}/>
+        //         </Col>
+        //     </Row>
+        //     <Row>
+        //         <Col>
+        //             <ModalUser
+        //             create={true}
+        //             resetState={resetState}
+        //             newUser={true}/>
+        //         </Col>
+        //     </Row>
+        // </Container>
+        <Container style={{marginLeft: "auto", marginRight: "auto"}}>
+            <Map/>
         </Container>
     )
 }
