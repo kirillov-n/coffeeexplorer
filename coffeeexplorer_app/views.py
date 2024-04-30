@@ -1,6 +1,6 @@
 from .models import *
 from rest_framework import permissions, viewsets
-
+from rest_framework.parsers import MultiPartParser, FormParser
 from .serializers import *
 
 class CityViewSet(viewsets.ModelViewSet):
@@ -35,6 +35,7 @@ class EstablishmentViewSet(viewsets.ModelViewSet):
     """
     queryset = Establishments.objects.all().order_by('name')
     serializer_class = EstablishmentSerializer
+    parser_classes = (MultiPartParser, FormParser)
     permission_classes = [permissions.AllowAny]
 
 

@@ -20,6 +20,8 @@ from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
 from django.contrib.auth import get_user_model
 from users import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 # router = routers.DefaultRouter()
 # router.register(r'users', views.UserViewSet)
@@ -32,4 +34,4 @@ urlpatterns = [
     # path('', include(router.urls)),
     path('api/users/', include('users.urls')),
     path('api/coffeeexplorer_app/', include('coffeeexplorer_app.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

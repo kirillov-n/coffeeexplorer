@@ -17,7 +17,8 @@ const App = () => {
           services: '',
           infrastructure: '.',
           address: `${establishment.address.street} ${establishment.address.building}`,
-          coordinates: [establishment.address.latitude, establishment.address.longitude]
+          coordinates: [establishment.address.latitude, establishment.address.longitude],
+          picture: establishment.picture,
         }));
         setObjectManagerFeatures(formattedData);
       })
@@ -39,6 +40,9 @@ const App = () => {
           `
           <div class="balloonContent">
             <div class="balloonContent__title">${point.name}</div>
+            <div class="balloonContent__img">
+            <img src= "${point.picture}" width="100" height="111" alt="${point.name}"></img>
+            </div>
             <div class="balloonContent__descr">
               <p>${point.description}</p>
             </div>
