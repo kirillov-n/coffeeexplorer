@@ -5,7 +5,7 @@ import App from './components/app/App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-export const API_URL = "http://127.0.0.1:8000/api/users/users/"
+export const API_URL = "http://127.0.0.1:8000/api/"
 export const API_STATIC_MEDIA = "http://127.0.0.1:8000/"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -52,7 +52,7 @@ class Establishments(models.Model):
     name = models.CharField(verbose_name="Название заведения", max_length=100)
     address = models.ForeignKey(Address, on_delete=models.PROTECT, verbose_name="Адрес")
     description = models.TextField(verbose_name="Описание", max_length=200)
-    picture = models.ImageField(verbose_name="Изображение", upload_to="uploads/establishments")
+    picture = models.ImageField(verbose_name="Изображение", upload_to="media/establishments")
     avg_bill = models.FloatField(verbose_name="Средний чек")
     veg_positions = models.BooleanField(verbose_name="Наличие вегетарианских позиций")
     alt_brewing = models.BooleanField(verbose_name="Наличие альтернативных способов заваривания")

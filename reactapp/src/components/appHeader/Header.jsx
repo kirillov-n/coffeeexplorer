@@ -10,7 +10,7 @@ const Header = () => {
                 alt="logo"
             />
             <hr/>
-            <h1>Пользователи Coffee Explorer</h1>
+            <h1>Coffee Explorer</h1>
         </div>)
 }
 

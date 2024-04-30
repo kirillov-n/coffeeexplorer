@@ -134,7 +134,7 @@ const UserForm = (props) => {
                 />
             </FormGroup>
             <div style={{display: "flex", justifyContent: "space-between"}}>
-                <Button>Send</Button> <Button onClick={props.toggle}>Cancel</Button>
+                <Button>Отправить</Button> <Button onClick={props.toggle}>Отмена</Button>
             </div>
         </Form>
     )

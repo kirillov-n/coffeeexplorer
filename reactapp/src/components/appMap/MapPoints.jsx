@@ -30,6 +30,9 @@ ecotrailPoints.map((point, index) => {
       `
         <div class="balloonContent">
           <div class="balloonContent__title">${point.name}</div>
+          <div class="balloonContent__img">
+            <img src= "https://avatars.mds.yandex.net/get-altay/11420721/2a0000018e6ffdff8f9384275aece7df33c0/S"></img>
+          </div>
           <div class="balloonContent__descr">
             <p>${point.description}</p>
           </div>
