@@ -14,6 +14,8 @@ class MetroStationSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class AddressSerializer(serializers.HyperlinkedModelSerializer):
+    city = CitySerializer(read_only=True)
+    metro_station = MetroStationSerializer(read_only=True)
     class Meta:
         model = Address
         fields = ["addressID", "city", "metro_station", "street", "building", "longitude", "latitude"]

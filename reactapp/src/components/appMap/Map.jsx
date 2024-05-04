@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { YMaps, Map, GeolocationControl, ObjectManager } from '@pbe/react-yandex-maps';
 import { API_URL } from "../../index";
+import "./Map.css";
 
 const App = () => {
   const [objectManagerFeatures, setObjectManagerFeatures] = useState([]);
@@ -25,6 +26,26 @@ const App = () => {
       .catch(error => console.error('Ошибка:', error));
   }, []);
 
+  useEffect(() => {
+    const adjustImageOffset = () => {
+      const images = document.querySelectorAll('.balloon-content__img img');
+      images.forEach(image => {
+        const containerHeight = image.parentElement.clientHeight;
+        const imageHeight = image.clientHeight;
+        const marginTop = (containerHeight - imageHeight) / 2;
+        image.style.marginTop = `${marginTop}px`;
+      });
+    };
+
+    adjustImageOffset();
+
+    window.addEventListener('resize', adjustImageOffset);
+
+    return () => {
+      window.removeEventListener('resize', adjustImageOffset);
+    };
+  }, []);
+
   const objectManagerData = {
     type: 'FeatureCollection',
     features: objectManagerFeatures.map((point, index) => ({
@@ -38,20 +59,20 @@ const App = () => {
         hintContent: `<div class="hintContent">${point.shortName}</div>`,
         balloonContent:
           `
-          <div class="balloonContent">
-            <div class="balloonContent__title">${point.name}</div>
-            <div class="balloonContent__img">
+          <div class="balloon-content">
+            <div class="balloon-content__title">${point.name}</div>
+            <div class="balloon-content__img">
             <img src= "${point.picture}" width="100" height="111" alt="${point.name}"></img>
             </div>
-            <div class="balloonContent__descr">
+            <div class="balloon-content__descr">
               <p>${point.description}</p>
             </div>
-            <a href='https://yandex.ru/maps/?rtext=~${point.coordinates[0]}%2C${point.coordinates[1]}' target="_blank">
-              <button class="balloonContent__btn">
-                Построить маршрут
+            <a href='/details/${point.id}' target="_blank">
+              <button class="balloon-content__btn">
+                Подробнее
               </button>
             </a>
-          </div>
+          </div>     
         `,
       },
     })),
@@ -59,11 +80,9 @@ const App = () => {
 
   return (
     <YMaps>
-      <div>
-        <Map defaultState={{ center: [59.93, 30.31], zoom: 12, controls: [] }} 
-          width="80vw"
-          height="50vh"> 
-          <GeolocationControl options={{ float: "left" }} /> 
+      <div className="map-container">
+        <Map defaultState={{ center: [59.93, 30.31], zoom: 12, controls: [] }} className="map"> 
+          <GeolocationControl options={{ float: "left" }} className="geolocation-control" /> 
           <ObjectManager
             options={{
               clusterize: true,
@@ -76,7 +95,6 @@ const App = () => {
             clusters={{
               preset: "islands#redClusterIcons",
             }}
-            // filter={(object) => object.id % 2 === 0}
             defaultFeatures={objectManagerData}
             modules={[
               "objectManager.addon.objectsBalloon",

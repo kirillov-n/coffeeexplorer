@@ -1,0 +1,78 @@
+.details-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .back-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .back-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .establishment-details {
+    margin-bottom: 40px;
+  }
+  
+  .establishment-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .establishment-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .establishment-description {
+    margin-bottom: 20px;
+  }
+  
+  .address-heading {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .address-details {
+    margin-bottom: 20px;
+  }
+  
+  .map-button-container {
+    text-align: center;
+  }
+  
+  .map-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .map-button:hover {
+    background-color: #218838;
+  }
+  
+  .establishment-features p {
+    margin-bottom: 10px;
+  }
+  
+  .loading-message {
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+  }
+  
