@@ -1,17 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "./Header.css";
+
 const Header = () => {
     return (
-        <div className="text-center">
-            <img
-                src="https://em-content.zobj.net/source/apple/391/hot-beverage_2615.png"
-                width="100"
-                className="img-thumbnail"
-                style={{marginTop: "20px"}}
-                alt="logo"
-            />
-            <hr/>
-            <h1>Coffee Explorer</h1>
-        </div>)
-}
+        <div className="text-left">
+            <h1>
+                <Link to="/" className="main-button">Coffee Explorer</Link>
+            </h1>
+        </div>
+    );
+};
 
 export default Header;

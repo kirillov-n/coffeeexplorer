@@ -10,8 +10,8 @@ import Map from "../appMap/Map";
 function App() {
     return (
         <Fragment>
-            <Header/>
                 <BrowserRouter>
+                    <Header/>
                     <Routes>
                         <Route path="/" element={<Map/> } />
                         <Route path="details/:establishmentID" element={<Details />} />
