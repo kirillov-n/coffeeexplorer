@@ -108,7 +108,7 @@ const App = () => {
           yandexMapDisablePoiInteractivity: true, // Отключает интерактивность POI
         }}
       >
-          <SearchControl options={{ float: 'left' }} />
+          {/* <SearchControl options={{ float: 'left' }} /> */}
           <GeolocationControl
             options={{ float: "right" }}
             className="geolocation-control"

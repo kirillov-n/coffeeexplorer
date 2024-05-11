@@ -26,7 +26,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     birthdate = models.DateField(verbose_name="Дата рождения")
     occupation = models.CharField(verbose_name="Занятость", choices=OCCUPATION_CHOICES)
     date_joined = models.DateTimeField(verbose_name="Дата регистрации", auto_now_add=True)
-    favourites = models.ManyToManyField(Establishments, verbose_name="Избранное")  # многие ко многим
+    favourites = models.ManyToManyField(Establishments, verbose_name="Избранное", blank=True, null=True)  # многие ко многим
     is_business = models.BooleanField(verbose_name="Бизнес аккаунт", default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)

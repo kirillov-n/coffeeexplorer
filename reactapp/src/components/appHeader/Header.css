@@ -1,7 +1,29 @@
+.header-container {
+  align-items: center;
+  padding: 15px;
+}
+
+.profile-button{
+  float: right;
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  float: left;
+}
+
 .main-button {
-    color: #ff5c00;
+    color: #ad8fbe;
     text-decoration: none;
     border: none;
     cursor: pointer;
-    padding-left: 20px;
+    margin-left: 5vh;
   }
+
+.profile-button img{
+  margin-right: 5vh;
+  width: 40px;
+  height: 40px;
+  display: block;
+}

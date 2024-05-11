@@ -1,7 +1,7 @@
 .map-container {
-    width: calc(100vw - 10vh); /* Ширина контейнера на 100% ширины экрана минус 10vh */
-    height: calc(100vh - 10vh); /* Высота контейнера на 100% высоты экрана минус 10vh */
-    border: 1px solid #ff5c00;
+    width: calc(100vw - 10vh);
+    height: calc(100vh - 10vh);
+    /* border: 1px solid #ff5c00; */
     border-radius: 15px;
     overflow: hidden;
     margin-left: 5vh;
@@ -52,7 +52,7 @@
     display: inline-block;
     margin-bottom: 20px;
     padding: 10px 20px;
-    background-color: #ff5c00;
+    background-color: #DCB6F1;
     color: #fff;
     text-decoration: none;
     border: none;

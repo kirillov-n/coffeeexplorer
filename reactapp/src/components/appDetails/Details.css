@@ -54,7 +54,6 @@
   }
   
   .establishment-features {
-    padding: 20px;
     border: 1px solid #ff5c00;
     border-radius: 5px;
     display: flex;
@@ -62,7 +61,7 @@
   }
 
   .establishment-features div{
-    padding: 20px;
+    margin: 0 20px 0 0;
   }
   
   .loading-message {

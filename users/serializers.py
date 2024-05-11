@@ -2,8 +2,29 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from .models import *
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
+
 
 User = get_user_model()
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+
+        # Add custom claims
+        token['email'] = user.email
+        token['nickname'] = user.nickname
+
+        return token
+
+class UserProfileSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    nickname = serializers.CharField()
+    sex = serializers.CharField()
+    birthdate = serializers.DateField()
+    occupation = serializers.CharField()
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
