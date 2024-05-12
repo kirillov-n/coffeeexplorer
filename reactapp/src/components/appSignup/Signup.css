@@ -1,0 +1,84 @@
+.signup-form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; /* Ширина формы */
+    padding: 20px;
+    border-radius: 10px; /* Скругление углов формы */
+    flex-direction: column;
+}
+
+.signup-form {
+    background-color: #ffffff; /* Цвет фона формы */
+    border-radius: 10px; /* Скругление углов формы */
+    padding: 20px;
+    width: 300px; /* Ширина формы */
+}
+
+.signup-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.signup-form input,
+.signup-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc; /* Цвет рамки полей ввода */
+    border-radius: 5px; /* Скругление углов полей ввода */
+}
+
+.signup-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Цвет кнопки */
+    color: #ffffff; /* Цвет текста на кнопке */
+    border: none;
+    border-radius: 5px; /* Скругление углов кнопки */
+    cursor: pointer;
+}
+
+.signup-form button:hover {
+    background-color: #0056b3; /* Измененный цвет кнопки при наведении */
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Добавляем стили для всплывающего окна об успешной регистрации */
+.success-message {
+    position: fixed;
+    top: 20px; /* Отступ от верхней границы страницы */
+    left: 50%; /* Располагаем по центру горизонтально */
+    transform: translateX(-50%); /* Центрируем относительно родительского контейнера */
+    background-color: #4CAF50; /* Цвет фона */
+    color: white; /* Цвет текста */
+    border-radius: 10px; /* Скругление углов */
+    padding: 20px; /* Внутренний отступ */
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); /* Тень */
+}
+
+.success-message p {
+    margin: 0; /* Убираем внешние отступы */
+    text-align: center; /* Выравниваем текст по центру */
+}
+
+.success-message button {
+    display: block; /* Располагаем кнопку на новой строке */
+    margin: 10px auto 0; /* Отступ сверху, авто по бокам */
+    padding: 10px 20px; /* Внутренний отступ */
+    background-color: #45a049; /* Цвет кнопки */
+    border: none; /* Убираем границы */
+    border-radius: 5px; /* Скругление углов */
+    color: white; /* Цвет текста */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+.success-message button:hover {
+    background-color: #357a38; /* Измененный цвет кнопки при наведении */
+}

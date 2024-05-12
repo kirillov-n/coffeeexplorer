@@ -7,6 +7,8 @@
   float: right;
   display: flex;
   align-items: center;
+  border: none;
+  background: none;
 }
 
 .text {
@@ -14,12 +16,12 @@
 }
 
 .main-button {
-    color: #ad8fbe;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    margin-left: 5vh;
-  }
+  color: #ad8fbe;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 5vh;
+}
 
 .profile-button img{
   margin-right: 5vh;

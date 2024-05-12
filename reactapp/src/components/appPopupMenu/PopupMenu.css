@@ -1,0 +1,45 @@
+.popup-menu {
+    position: absolute;
+    top: 50px; /* Задайте нужное вам расстояние от верхнего края страницы */
+    right: 20px; /* Задайте нужное вам расстояние от правого края страницы */
+    background-color: #ffffff; /* Цвет фона */
+    border: 1px solid #ccc; /* Граница */
+    padding: 10px; /* Отступы внутри меню */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Тень */
+    z-index: 1000; /* Уровень над другими элементами */
+    border-radius: 10px;
+}
+
+.popup-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.popup-menu li {
+    margin-bottom: 10px;
+}
+
+.popup-menu a {
+    text-decoration: none;
+    color: #333;
+}
+
+.popup-menu button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    color: #333;
+}
+
+/* Добавление стилей при наведении на ссылку */
+.popup-menu a:hover {
+    color: #007bff; /* Измененный цвет текста при наведении */
+}
+
+/* Добавление стилей при наведении на кнопку */
+.popup-menu button:hover {
+    color: #007bff; /* Измененный цвет текста при наведении */
+}
