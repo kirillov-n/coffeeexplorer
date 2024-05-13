@@ -1,11 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios"; // Импортируем axios
 import { API_URL } from "../../index";
 import "./Details.css";
+import ReviewList from "../appReview/ReviewList";
+import ReviewForm from "../appReview/ReviewForm";
 
-export const Details = () => {
+const Details = () => {
     const { establishmentID } = useParams();
     const [establishment, setEstablishment] = useState(null);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [userProfile, setUserProfile] = useState(null); // Состояние для профиля пользователя
+    const [error, setError] = useState(null); // Состояние для ошибки
+
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+            try {
+                const token = localStorage.getItem('accessToken');
+                const response = await axios.get(`${API_URL}users/profile/`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                setUserProfile(response.data);
+            } catch (error) {
+                setError(error);
+            }
+        };
+
+        fetchUserProfile();
+    }, []); // Пустой массив зависимостей, чтобы useEffect вызывался только один раз при монтировании компонента
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,6 +47,31 @@ export const Details = () => {
 
         fetchData();
     }, [establishmentID]);
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem("accessToken");
+        if (accessToken) {
+            setIsAuthenticated(true);
+        }
+    }, []);
+
+    const handleReviewSubmit = async (reviewData) => {
+        try {
+            const token = localStorage.getItem("accessToken");
+            const response = await axios.post(`${API_URL}users/posts/`, reviewData, {
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            if (!response.data.success) {
+                throw new Error('Failed to submit review');
+            }
+            console.log("Отзыв успешно отправлен на сервер");
+        } catch (error) {
+            console.error('Error submitting review:', error);
+        }
+    };
 
     return (
         <div className="details-container">
@@ -67,6 +116,10 @@ export const Details = () => {
                         </button>
                     </div>
                     <div className="recomendations">Похожие: {establishment.close}</div>
+                    {isAuthenticated && userProfile && (
+                        <ReviewForm establishmentID={establishmentID} isAuthenticated={isAuthenticated} user={userProfile} onReviewSubmit={handleReviewSubmit} />
+                    )}
+                    <ReviewList establishmentID={establishmentID} />
                 </div>
             ) : (
                 <p className="loading-message">Загрузка данных...</p>

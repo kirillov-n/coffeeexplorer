@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from .models import *
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
+from coffeeexplorer_app.serializers import EstablishmentSerializer
 
 
 User = get_user_model()
@@ -20,11 +21,18 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         return token
 
 class UserProfileSerializer(serializers.Serializer):
+    userID = serializers.IntegerField(read_only=True)
     email = serializers.EmailField()
     nickname = serializers.CharField()
     sex = serializers.CharField()
     birthdate = serializers.DateField()
     occupation = serializers.CharField()
+    date_joined = serializers.DateTimeField()
+    favourites = serializers.PrimaryKeyRelatedField(many=True, queryset=Establishments.objects.all())
+    is_business = serializers.BooleanField()
+    is_staff = serializers.BooleanField()
+    is_active = serializers.BooleanField()
+
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -45,9 +53,13 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
+    establishment = EstablishmentSerializer(read_only=True)
+    establishmentID = serializers.PrimaryKeyRelatedField(source='establishment', queryset=Establishments.objects.all(), write_only=True)
+    user = UserSerializer(read_only=True)
+    userID = serializers.PrimaryKeyRelatedField(source='user', queryset=CustomUser.objects.all(), write_only=True)
     class Meta:
         model = Posts
-        fields = ["PostID", "user", "establishment", "picture", "rating", "body", "time_created", "time_edited"]
+        fields = ["PostID", "user", "userID", "establishment", "establishmentID", "picture", "rating", "body", "time_created", "time_edited"]
 
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):

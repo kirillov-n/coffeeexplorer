@@ -38,6 +38,7 @@ const UserProfile = () => {
       <h1>User Profile</h1>
       <p>Email: {userProfile.email}</p>
       <p>Nickname: {userProfile.nickname}</p>
+      <p>id: {userProfile.userID}</p>
       {/* Дополнительная информация о пользователе */}
     </div>
   );

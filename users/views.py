@@ -68,6 +68,18 @@ class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     permission_classes = [permissions.AllowAny]
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        establishmentID = self.request.query_params.get('establishment', None)
+        if establishmentID:
+            try:
+                establishmentID = int(establishmentID)  # Преобразуем в число
+                queryset = queryset.filter(establishment__establishmentID=establishmentID)
+            except ValueError:
+                pass  # Обработка неверного значения
+        return queryset
+
+
 
 class CommentViewSet(viewsets.ModelViewSet):
     """

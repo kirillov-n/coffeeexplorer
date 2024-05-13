@@ -30,6 +30,7 @@ const SigninForm = ({ onLogin }) => {
 
       // Cохраняем токен обновления в localStorage
       localStorage.setItem('refreshToken', response.data.refresh);
+
     } catch (error) {
       console.error('Login failed:', error.response.data);
       // Обработка ошибки входа
