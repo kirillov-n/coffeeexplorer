@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios"; // Импортируем axios
+import { useParams, Link } from "react-router-dom";
+import axios from "axios";
 import { API_URL } from "../../index";
 import "./Details.css";
 import ReviewList from "../appReview/ReviewList";
@@ -9,9 +9,10 @@ import ReviewForm from "../appReview/ReviewForm";
 const Details = () => {
     const { establishmentID } = useParams();
     const [establishment, setEstablishment] = useState(null);
+    const [closeEstablishments, setCloseEstablishments] = useState([]);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [userProfile, setUserProfile] = useState(null); // Состояние для профиля пользователя
-    const [error, setError] = useState(null); // Состояние для ошибки
+    const [userProfile, setUserProfile] = useState(null);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchUserProfile = async () => {
@@ -29,7 +30,7 @@ const Details = () => {
         };
 
         fetchUserProfile();
-    }, []); // Пустой массив зависимостей, чтобы useEffect вызывался только один раз при монтировании компонента
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -47,6 +48,26 @@ const Details = () => {
 
         fetchData();
     }, [establishmentID]);
+
+    useEffect(() => {
+        const fetchCloseEstablishmentsData = async () => {
+            try {
+                const closeEstablishmentIds = establishment?.close || [];
+                const closeEstablishmentData = await Promise.all(closeEstablishmentIds.map(async (id) => {
+                    const response = await fetch(`${API_URL}coffeeexplorer_app/establishments/${id}/`);
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch close establishment data');
+                    }
+                    return response.json();
+                }));
+                setCloseEstablishments(closeEstablishmentData);
+            } catch (error) {
+                console.error('Error fetching close establishment data:', error);
+            }
+        };
+
+        fetchCloseEstablishmentsData();
+    }, [establishment]);
 
     useEffect(() => {
         const accessToken = localStorage.getItem("accessToken");
@@ -73,13 +94,33 @@ const Details = () => {
         }
     };
 
+    const renderCloseEstablishments = () => {
+        if (!closeEstablishments || closeEstablishments.length === 0) return null;
+
+        return (
+            <div className="close-establishments-container">
+                <h2 className="close-establishments-heading">Похожие заведения:</h2>
+                <div className="close-establishments">
+                    {closeEstablishments.map((establishment) => (
+                        <Link to={`/details/${establishment.establishmentID}`} key={establishment.establishmentID}>
+                            <div className="close-establishment-card">
+                                <img src={establishment.picture} alt={establishment.name} className="close-establishment-image" />
+                                <p className="close-establishment-name">{establishment.name}</p>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+            </div>
+        );
+    };
+
     return (
         <div className="details-container">
             {establishment ? (
                 <div className="establishment-details">
                     <h1 className="establishment-name">{establishment.name}</h1>
                     <div className="info">
-                        <img src={establishment.picture} alt={establishment.name} className="establishment-image" />
+                        <img src={establishment.picture} alt={establishment.name} className="main-establishment-image" />
                         <div>
                             <p className="establishment-description">{establishment.description}</p>
                             <p className="address-details">
@@ -104,6 +145,7 @@ const Details = () => {
                             </div>
                         </div>
                     </div>
+                    {/* Кнопка открытия на карте */}
                     <div className="map-button-container">
                         <button
                             className="map-button"
@@ -115,10 +157,13 @@ const Details = () => {
                             Открыть на картах Яндекс
                         </button>
                     </div>
-                    <div className="recomendations">Похожие: {establishment.close}</div>
+                    {/* Похожие заведения */}
+                    {renderCloseEstablishments()}
+                    {/* Форма для отправки отзыва */}
                     {isAuthenticated && userProfile && (
                         <ReviewForm establishmentID={establishmentID} isAuthenticated={isAuthenticated} user={userProfile} onReviewSubmit={handleReviewSubmit} />
                     )}
+                    {/* Список отзывов */}
                     <ReviewList establishmentID={establishmentID} />
                 </div>
             ) : (

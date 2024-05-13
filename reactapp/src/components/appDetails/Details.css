@@ -17,7 +17,7 @@
     display: flex;
   }
   
-  .establishment-image {
+  .main-establishment-image {
     width: 100%;
     max-width: 400px;
     height: auto;
@@ -69,4 +69,79 @@
     font-size: 18px;
     color: #999;
   }
+
+  .details-container {
+    padding: 20px;
+}
+
+.establishment-details {
+    margin-bottom: 40px;
+}
+
+.establishment-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.info {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.establishment-image {
+    width: 200px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.establishment-description {
+    margin-bottom: 10px;
+}
+
+.address-details {
+    margin-bottom: 10px;
+}
+
+.map-button-container {
+    margin-bottom: 20px;
+}
+
+.map-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.close-establishments-container {
+    margin-bottom: 40px;
+}
+
+.close-establishments-heading {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.close-establishments {
+    display: flex;
+    overflow-x: auto;
+}
+
+.close-establishment-card {
+    margin-right: 10px;
+    text-align: center;
+}
+
+.close-establishment-image {
+    width: 120px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+.close-establishment-name {
+    font-size: 14px;
+}
+
   
