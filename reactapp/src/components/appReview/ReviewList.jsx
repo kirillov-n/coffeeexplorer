@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { API_URL } from "../../index";
+import "./ReviewList.css";
 
 const ReviewList = ({ establishmentID }) => {
     const [reviews, setReviews] = useState([]);
@@ -13,7 +14,9 @@ const ReviewList = ({ establishmentID }) => {
                     throw new Error('Failed to fetch reviews');
                 }
                 const data = await response.json();
-                setReviews(data);
+                // Сортируем отзывы по убыванию даты создания
+                const sortedReviews = data.sort((a, b) => new Date(b.time_created) - new Date(a.time_created));
+                setReviews(sortedReviews);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching reviews:', error);
@@ -24,23 +27,28 @@ const ReviewList = ({ establishmentID }) => {
     }, [establishmentID]);
 
     return (
-        <div className="review-list">
-            <h2>Отзывы</h2>
+        <div className="review-list-container">
+            <h2 className="review-list-header">Отзывы</h2>
             {loading ? (
                 <p>Загрузка отзывов...</p>
             ) : (
-                <ul>
+                <ul className="review-list">
                     {reviews.map(review => (
-                        <li key={review.PostID}>
-                            <p>Пользователь: {review.user.nickname}</p>
-                            <p>Рейтинг: {review.rating}</p>
-                            <p>Текст: {review.body}</p>
-                            {review.picture && (
-                                <div>
-                                    <p>Изображение:</p>
-                                    <img src={review.picture} alt="Отзыв" style={{ maxWidth: '100px', maxHeight: '100px' }} />
-                                </div>
-                            )}
+                        <li key={review.PostID} className="review-item">
+                            <div>
+                                <p className="user-nickname">Пользователь: {review.user.nickname}</p>
+                                <p>Рейтинг: {review.rating}</p>
+                                <p>{review.body}</p>
+                                {review.picture && (
+                                    <div>
+                                        <img src={review.picture} alt="Отзыв" className="review-image" />
+                                    </div>
+                                )}
+                                <p>Дата создания: {new Date(review.time_created).toLocaleString()}</p>
+                                {review.time_edited && review.time_created !== review.time_edited && (
+                                    <p>Дата редактирования: {new Date(review.time_edited).toLocaleString()}</p>
+                                )}
+                            </div>
                         </li>
                     ))}
                 </ul>
