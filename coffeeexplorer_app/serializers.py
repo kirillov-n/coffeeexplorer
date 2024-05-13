@@ -26,7 +26,7 @@ class EstablishmentSerializer(serializers.HyperlinkedModelSerializer):
     picture = serializers.ImageField(required=True)
     class Meta:
         model = Establishments
-        fields = ["establishmentID", "name", "address", "description", "picture", "avg_bill", "veg_positions", "alt_brewing", "alt_milk", "pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work", "close"]
+        fields = ["establishmentID", "name", "address", "description", "picture", "avg_bill", "veg_positions", "alt_brewing", "alt_milk", "small_pets", "big_pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work", "close"]
         
 
 

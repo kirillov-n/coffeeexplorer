@@ -64,18 +64,18 @@ class EstablishmentsAdmin(admin.ModelAdmin):
     form = EstablishmentsChangeForm
     model = Establishments
     list_display = ("name", "address", "description", "picture", "avg_bill", "veg_positions", "alt_brewing", "alt_milk",
-                    "pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work", "close")
+                    "small_pets", "big_pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work", "close")
     list_filter = ("name", "address", "avg_bill", "veg_positions", "alt_brewing", "alt_milk",
-                   "pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work", "close")
+                   "small_pets", "big_pets","food", "non_coffee_drink", "decaf", "wifi", "place_for_work", "close")
     fieldsets = (
         (None, {'fields': ("name", "address", "description", "picture", "avg_bill", "veg_positions", "alt_brewing",
-                           "alt_milk", "pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work",)}),
+                           "alt_milk", "small_pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work",)}),
     )
     add_fieldsets = (
         (None, {
             "classes": ("wide",),
             "fields": ("name", "address", "description", "picture", "avg_bill", "veg_positions", "alt_brewing",
-                       "alt_milk", "pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work",)}
+                       "alt_milk", "small_pets", "big_pets","food", "non_coffee_drink", "decaf", "wifi", "place_for_work",)}
          ),
     )
     search_fields = ("name",)

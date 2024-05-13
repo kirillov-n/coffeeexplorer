@@ -89,17 +89,17 @@ const Details = () => {
                             <div className="establishment-features">
                                 <div>
                                     <p>Средний чек: {establishment.avg_bill}₽</p>
-                                    <p>Позиции для вегетарианцев: {establishment.veg_positions ? "Да" : "Нет"}</p>
+                                    <p>Веганское меню: {establishment.veg_positions ? "Да" : "Нет"}</p>
                                     <p>Альтернативные методы заваривания: {establishment.alt_brewing ? "Да" : "Нет"}</p>
                                     <p>Альтернативное молоко: {establishment.alt_milk ? "Да" : "Нет"}</p>
-                                    <p>Прием питомцев: {establishment.pets ? "Да" : "Нет"}</p>
-                                    <p>Еда: {establishment.food ? "Да" : "Нет"}</p>
+                                    <p>Догфрендли: {establishment.small_pets ? "Можно с маленькими собаками" : "Нет"} {establishment.big_pets ? "Можно с большими собаками" : "Нет"}</p>
+                                    <p>Кухня: {establishment.food ? "Да" : "Нет"}</p>
                                 </div>
                                 <div>
                                     <p>Не кофейные напитки: {establishment.non_coffee_drink ? "Да" : "Нет"}</p>
                                     <p>Кофе без кофеина: {establishment.decaf ? "Да" : "Нет"}</p>
                                     <p>Wi-Fi: {establishment.wifi ? "Да" : "Нет"}</p>
-                                    <p>Место для работы: {establishment.place_for_work ? "Да" : "Нет"}</p>
+                                    <p>Места для работы: {establishment.place_for_work ? "Да" : "Нет"}</p>
                                 </div>
                             </div>
                         </div>

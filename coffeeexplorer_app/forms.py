@@ -44,14 +44,14 @@ class EstablishmentsCreationForm(ModelForm):
     class Meta:
         model = Establishments
         fields = ("name", "address", "description", "picture", "avg_bill", "veg_positions", "alt_brewing", "alt_milk",
-                  "pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work")
+                  "small_pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work")
 
 
 class EstablishmentsChangeForm(ModelForm):
     class Meta:
         model = Establishments
         fields = ("name", "address", "description", "picture", "avg_bill", "veg_positions", "alt_brewing", "alt_milk",
-                  "pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work")
+                  "small_pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work")
 
 
 class WorkingHoursCreationForm(ModelForm):

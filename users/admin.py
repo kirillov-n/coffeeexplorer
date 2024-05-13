@@ -9,18 +9,18 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-    list_display = ("email", "nickname", "sex", "birthdate", "occupation", "is_business", "is_staff", "is_active",
+    list_display = ("email", "nickname", "sex", "birthdate", "occupation", "avg_bill", "veg_positions", "alt_brewing", "alt_milk", "small_pets", "big_pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work", "recommendations", "is_business", "is_staff", "is_active",
                     "is_superuser")
-    list_filter = ("email", "nickname", "sex", "birthdate", "occupation", "is_staff", "is_active",)
+    list_filter = ("email", "nickname", "sex", "birthdate", "occupation", "avg_bill", "veg_positions", "alt_brewing", "alt_milk", "small_pets", "big_pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work", "recommendations", "is_staff", "is_active",)
     fieldsets = (
-        (None, {"fields": ("email", "nickname", "sex", "birthdate", "occupation", "is_business", "password")}),
+        (None, {"fields": ("email", "nickname", "sex", "birthdate", "occupation", "avg_bill", "veg_positions", "alt_brewing", "alt_milk", "small_pets", "big_pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work", "recommendations", "is_business", "password")}),
         ("Разрешения", {"fields": ("is_staff", "is_active", "groups", "user_permissions")}),
     )
     add_fieldsets = (
         (None, {
             "classes": ("wide",),
             "fields": (
-                "email", "nickname", "sex", "birthdate", "occupation", "is_business", "password1", "password2",
+                "email", "nickname", "sex", "birthdate", "occupation", "avg_bill", "veg_positions", "alt_brewing", "alt_milk", "small_pets", "big_pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work", "recommendations", "is_business", "password1", "password2",
                 "is_staff",
                 "is_active", "groups", "user_permissions"
             )}

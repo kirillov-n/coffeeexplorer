@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-
+from django.contrib.postgres.fields import ArrayField
 from coffeeexplorer_app.models import Establishments
 from .managers import CustomUserManager
 
@@ -30,6 +30,19 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_business = models.BooleanField(verbose_name="Бизнес аккаунт", default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    # Далее поля для рекомендаций
+    avg_bill = models.FloatField(verbose_name="Допустимый средний чек")
+    veg_positions = models.BooleanField(null=True, blank=True,verbose_name="Нужны ли вегетарианские позиции?")
+    alt_brewing = models.BooleanField(null=True, blank=True,verbose_name="Нужны ли альтернативные способы заваривания?")
+    alt_milk = models.BooleanField(null=True, blank=True,verbose_name="Нужно ли альтернативное молоко")
+    small_pets = models.BooleanField(null=True, blank=True,verbose_name="Важна ли возможность посетить с маленькой собакой")
+    big_pets = models.BooleanField(null=True, blank=True,verbose_name="Важна ли возможность посетить с большой собакой")
+    food = models.BooleanField(null=True, blank=True,verbose_name="Нужна ли кухня")
+    non_coffee_drink = models.BooleanField(null=True, blank=True,verbose_name="Нужы ли не кофейные напитки")
+    decaf = models.BooleanField(null=True, blank=True,verbose_name="Нужен ли декаф")
+    wifi = models.BooleanField(null=True, blank=True,verbose_name="Нужен ли wifi")
+    place_for_work = models.BooleanField(null=True, blank=True,verbose_name="Нужны ли места для работы")
+    recommendations = ArrayField(models.IntegerField(), null=True, blank=True, verbose_name="Рекомендации заведений")
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["nickname", "sex", "birthdate", "occupation"]

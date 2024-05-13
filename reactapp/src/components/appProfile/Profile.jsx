@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from "../../index";
-
+import ProfileForm from './ProfileForm'; // Импортируем компонент формы
 
 const UserProfile = () => {
   const [userProfile, setUserProfile] = useState(null);
@@ -10,36 +10,39 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const token = localStorage.getItem('accessToken'); // Получаем токен из localStorage
+        const token = localStorage.getItem('accessToken');
         const response = await axios.get(API_URL + "users/profile/", {
           headers: {
-            Authorization: `Bearer ${token}` // Передаем токен в заголовке запроса
+            Authorization: `Bearer ${token}`
           }
         });
-        setUserProfile(response.data); // Сохраняем данные профиля пользователя в state
+        setUserProfile(response.data);
       } catch (error) {
-        setError(error); // Сохраняем ошибку, если запрос не удался
+        setError(error);
       }
     };
 
     fetchUserProfile();
   }, []);
 
+  const handleProfileUpdate = (updatedProfile) => {
+    setUserProfile(updatedProfile); // Обновляем данные профиля после успешного обновления
+  };
+
   if (error) {
-    return <div>Error fetching user profile: {error.message}</div>; // Обработка ошибки
+    return <div>Error fetching user profile: {error.message}</div>;
   }
 
   if (!userProfile) {
-    return <div>Loading...</div>; // Отображение загрузки, пока происходит запрос
+    return <div>Loading...</div>;
   }
 
   return (
     <div>
       <h1>User Profile</h1>
-      <p>Email: {userProfile.email}</p>
-      <p>Nickname: {userProfile.nickname}</p>
-      <p>id: {userProfile.userID}</p>
-      {/* Дополнительная информация о пользователе */}
+      <p>Привет, {userProfile.nickname}</p>
+      {/* Отображение другой информации о профиле */}
+      <ProfileForm userProfile={userProfile} onUpdate={handleProfileUpdate} />
     </div>
   );
 };

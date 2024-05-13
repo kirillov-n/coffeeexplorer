@@ -32,12 +32,32 @@ class UserProfileSerializer(serializers.Serializer):
     is_business = serializers.BooleanField()
     is_staff = serializers.BooleanField()
     is_active = serializers.BooleanField()
+    avg_bill = serializers.FloatField()
+    veg_positions = serializers.BooleanField()
+    alt_brewing = serializers.BooleanField()
+    alt_milk = serializers.BooleanField()
+    small_pets = serializers.BooleanField()
+    big_pets = serializers.BooleanField()
+    food = serializers.BooleanField()
+    non_coffee_drink = serializers.BooleanField()
+    decaf = serializers.BooleanField()
+    wifi = serializers.BooleanField()
+    place_for_work = serializers.BooleanField()
+    recommendations = serializers.ListField(
+        child=serializers.IntegerField()  # Тип элементов массива
+    )
+    def update(self, instance, validated_data):
+    # Обновляем каждое поле, если оно присутствует в данных
+        for field, value in validated_data.items():
+            setattr(instance, field, value)
+        instance.save()
+        return instance
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ["userID", "email", "nickname", "sex", "birthdate", "occupation", "is_business", "password", "date_joined", "favourites"]
+        fields = ["userID", "email", "nickname", "sex", "birthdate", "occupation", "is_business", "password", "date_joined", "favourites", "avg_bill", "veg_positions", "alt_brewing", "alt_milk", "small_pets", "big_pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work", "recommendations"]
     def create(self, validated_data):
         user = User(
             email=validated_data['email'],
