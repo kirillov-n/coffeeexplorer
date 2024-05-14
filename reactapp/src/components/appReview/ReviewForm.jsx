@@ -90,7 +90,7 @@ const ReviewForm = ({ establishmentID, isAuthenticated, user, onReviewSubmit }) 
                     placeholder="Текст отзыва"
                 ></textarea>
             </div>
-            <div className="form-group">
+            <div className="form-group-file">
                 <input
                     type="file"
                     id="picture"
@@ -100,7 +100,7 @@ const ReviewForm = ({ establishmentID, isAuthenticated, user, onReviewSubmit }) 
                     placeholder="Изображение"
                 />
             </div>
-            <button type="submit">Отправить отзыв</button>
+                <button type="submit">Отправить</button>
         </form>
     );
 };

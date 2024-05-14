@@ -19,6 +19,7 @@
 .signup-form h2 {
     text-align: center;
     margin-bottom: 20px;
+    color: #8A6552; /* Темно-коричневый (текст) */
 }
 
 .signup-form input,
@@ -26,14 +27,16 @@
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc; /* Цвет рамки полей ввода */
+    border: none; /* Цвет рамки полей ввода */
     border-radius: 5px; /* Скругление углов полей ввода */
+    background-color: #F9F4EF;
+    color: #757575; /* Цвет текста в инпутах */
 }
 
 .signup-form button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff; /* Цвет кнопки */
+    background-color: #AB806C; /* Цвет кнопки */
     color: #ffffff; /* Цвет текста на кнопке */
     border: none;
     border-radius: 5px; /* Скругление углов кнопки */
@@ -41,7 +44,7 @@
 }
 
 .signup-form button:hover {
-    background-color: #0056b3; /* Измененный цвет кнопки при наведении */
+    background-color: #8A6552; /* Измененный цвет кнопки при наведении */
 }
 
 .error-message {

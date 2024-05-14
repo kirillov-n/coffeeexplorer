@@ -1,147 +1,117 @@
 .details-container {
-    width: 100%;  
-    height: 100vh;
-    padding: 20px;
-  }
-  
-  .establishment-details {
-    margin-bottom: 40px;
-  }
-  
-  .establishment-name {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-
-  .info{
-    display: flex;
-  }
-  
-  .main-establishment-image {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    border-radius: 5px;
-    display: inline-block;
-  }
-  
-  .establishment-description {
-    display: inline-block;
-    margin: 5px;
-  }
-  
-  .address-details {
-    margin: 5px;
-  }
-  
-  .map-button-container {
-    text-align: center;
-  }
-  
-  .map-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #ff5c00;
-    color: #fff;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .map-button:hover {
-    background-color: #b13f00;
-  }
-  
-  .establishment-features {
-    border: 1px solid #ff5c00;
-    border-radius: 5px;
-    display: flex;
-    margin: 5px;
-  }
-
-  .establishment-features div{
-    margin: 0 20px 0 0;
-  }
-  
-  .loading-message {
-    text-align: center;
-    font-size: 18px;
-    color: #999;
-  }
-
-  .details-container {
-    padding: 20px;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  background-color: #F1E6D6; /* Светлый фон для контейнера */
 }
 
 .establishment-details {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .establishment-name {
-    font-size: 24px;
-    margin-bottom: 10px;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #8A6552; /* Основной тёмный текст */
 }
 
 .info {
-    display: flex;
-    margin-bottom: 20px;
+  display: flex;
+  margin-bottom: 20px;
 }
 
-.establishment-image {
-    width: 200px;
-    height: auto;
-    margin-right: 20px;
+.main-establishment-image {
+  width: 250px;
+  height: auto;
+  margin-right: 20px;
+  border-radius: 5px;
+  border: 1px solid #C4A484; /* Граница для изображения */
 }
 
 .establishment-description {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
+  color: #8A6552; /* Основной тёмный текст */
 }
 
 .address-details {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
+  color: #8A6552; /* Основной тёмный текст */
 }
 
 .map-button-container {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .map-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+  padding: 10px 20px;
+  background-color: #AB806C; /* Основной акцентный цвет */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.map-button:hover {
+  background-color: #8A6552; /* Цвет кнопки при наведении */
+}
+
+.establishment-features {
+  border: 1px solid #C4A484; /* Граница для характеристик */
+  border-radius: 5px;
+  display: flex;
+  margin: 5px;
+  padding: 10px;
+  background-color: #F1E6D6; /* Светлый фон для характеристик */
+}
+
+.establishment-features div {
+  margin: 0 20px 0 0;
+  color: #8A6552; /* Основной тёмный текст */
+}
+
+.loading-message {
+  text-align: center;
+  font-size: 18px;
+  color: #999;
 }
 
 .close-establishments-container {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .close-establishments-heading {
-    font-size: 20px;
-    margin-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #8A6552; /* Основной тёмный текст */
 }
 
 .close-establishments {
-    display: flex;
-    overflow-x: auto;
+  display: flex;
+  overflow-x: auto;
 }
 
 .close-establishment-card {
-    margin-right: 10px;
-    text-align: center;
+  margin-right: 10px;
+  text-align: center;
 }
 
 .close-establishment-image {
-    width: 120px;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 5px;
+  width: 120px;
+  height: 120px; /* Установите фиксированную высоту */
+  border-radius: 8px;
+  margin-bottom: 5px;
+  border: 1px solid #C4A484; /* Граница для изображений */
+  object-fit: cover; /* Обрезать изображение до размеров контейнера */
 }
+
 
 .close-establishment-name {
-    font-size: 14px;
+  font-size: 14px;
+  color: #8A6552; /* Основной тёмный текст */
 }
 
-  
+.close-establishment-link {
+  text-decoration: none;
+}

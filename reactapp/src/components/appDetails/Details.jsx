@@ -102,7 +102,7 @@ const Details = () => {
                 <h2 className="close-establishments-heading">Похожие заведения:</h2>
                 <div className="close-establishments">
                     {closeEstablishments.map((establishment) => (
-                        <Link to={`/details/${establishment.establishmentID}`} key={establishment.establishmentID}>
+                        <Link to={`/details/${establishment.establishmentID}`} key={establishment.establishmentID} className="close-establishment-link">
                             <div className="close-establishment-card">
                                 <img src={establishment.picture} alt={establishment.name} className="close-establishment-image" />
                                 <p className="close-establishment-name">{establishment.name}</p>

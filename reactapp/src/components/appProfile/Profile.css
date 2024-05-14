@@ -1,0 +1,25 @@
+.user-profile {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .profile-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #8A6552; /* Темно-коричневый (текст) */
+  }
+  
+  .greeting {
+    margin-bottom: 20px;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
+  .loading-message {
+    font-style: italic;
+    color: #888;
+  }
+  

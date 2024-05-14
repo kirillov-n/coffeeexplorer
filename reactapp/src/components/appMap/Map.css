@@ -1,61 +1,69 @@
 .map-container {
-    width: calc(100vw - 10vh);
-    height: calc(100vh - 10vh);
-    /* border: 1px solid #ff5c00; */
-    border-radius: 15px;
-    overflow: hidden;
-    margin-left: 5vh;
-    margin-right: 5vh;
-    margin-bottom: 5vh;
-  }
-  
-  .map {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .balloon-content {
-    max-width: 500px;
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 10px;
-  }
-  
-  .balloon-content__title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .balloon-content__img {
-    max-height: 200px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-  }
-  
-  .balloon-content__img img {
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-  }
-  
-  .balloon-content__descr p {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  
-  .balloon-content__btn {
-    display: inline-block;
-    margin-bottom: 20px;
-    padding: 10px 20px;
-    background-color: #DCB6F1;
-    color: #fff;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+  width: calc(100vw - 10vh);
+  height: calc(100vh - 10vh);
+  /* border: 1px solid #ff5c00; */
+  border-radius: 15px;
+  overflow: hidden;
+  margin-left: 5vh;
+  margin-right: 5vh;
+  margin-bottom: 5vh;
+  background-color: #F1E6D6; /* Основной светлый фон */
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+.balloon-content {
+  max-width: 500px;
+  background-color: #ffffff; /* Светлый фон для всплывающего окна */
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.balloon-content__title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #8A6552; /* Основной темный текст */
+}
+
+.balloon-content__img {
+  max-height: 200px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.balloon-content__img img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.balloon-content__descr p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #8A6552; /* Основной темный текст */
+}
+
+.balloon-content__btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #AB806C; /* Основной акцентный цвет */
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+[class*="-balloon"] {
+  background-color: #ffffff;
+  border-radius: 6px;
+}

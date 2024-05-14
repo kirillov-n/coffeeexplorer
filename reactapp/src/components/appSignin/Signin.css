@@ -1,50 +1,51 @@
-  .signin-form-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px; /* Ширина формы */
-    padding: 20px;
-    border-radius: 10px; /* Скругление углов формы */
-    flex-direction: column;
-  }
-  
-  .signin-form {
-    background-color: #ffffff; /* Цвет фона формы */
-    border-radius: 10px; /* Скругление углов формы */
-    padding: 20px;
-  }
-  
-  .signin-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .signin-form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc; /* Цвет рамки полей ввода */
-    border-radius: 5px; /* Скругление углов полей ввода */
-  }
-  
-  .signin-form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff; /* Цвет кнопки */
-    color: #ffffff; /* Цвет текста на кнопке */
-    border: none;
-    border-radius: 5px; /* Скругление углов кнопки */
-    cursor: pointer;
-  }
-  
-  .signin-form button:hover {
-    background-color: #0056b3; /* Измененный цвет кнопки при наведении */
-  }
-  
-  .error-message {
-    color: red;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
+.signin-form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px; /* Ширина формы */
+  padding: 20px;
+  border-radius: 10px; /* Скругление углов формы */
+  flex-direction: column;
+}
+
+.signin-form {
+  background-color: #ffffff; /* Цвет фона формы */
+  border-radius: 10px; /* Скругление углов формы */
+  padding: 20px;
+}
+
+.signin-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #8A6552; /* Темно-коричневый (текст) */
+}
+
+.signin-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px; /* Скругление углов полей ввода */
+  background-color: #F9F4EF;
+  border: 1px solid #F9F4EF; 
+}
+
+.signin-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #AB806C; /* Цвет кнопки */
+  color: #ffffff; /* Цвет текста на кнопке */
+  border: none;
+  border-radius: 5px; /* Скругление углов кнопки */
+  cursor: pointer;
+}
+
+.signin-form button:hover {
+  background-color: #AB806C; /* Измененный цвет кнопки при наведении */
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-bottom: 10px;
+}

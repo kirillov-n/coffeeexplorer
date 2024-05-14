@@ -1,5 +1,5 @@
 .review-list-container {
-    background-color: #f9f9f9;
+    background-color: #F1E6D6; /* Светлый бежевый */
     padding: 20px;
     border-radius: 10px;
     margin-top: 20px;
@@ -8,6 +8,7 @@
 .review-list-header {
     font-size: 24px;
     margin-bottom: 10px;
+    color: #8A6552; /* Темно-коричневый (текст) */
 }
 
 .review-list {
@@ -16,7 +17,7 @@
 }
 
 .review-item {
-    background-color: #fff;
+    background-color: #F9F4EF; /* Очень светлый бежевый (фон карточек) */
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -31,4 +32,5 @@
     max-width: 200px;
     max-height: 200px;
     margin-top: 10px;
+    border-radius: 5%;
 }

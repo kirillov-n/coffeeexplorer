@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from "../../index";
 import ProfileForm from './ProfileForm'; // Импортируем компонент формы
+import './Profile.css'; // Импортируем файл стилей для UserProfile
 
 const UserProfile = () => {
   const [userProfile, setUserProfile] = useState(null);
@@ -30,17 +31,16 @@ const UserProfile = () => {
   };
 
   if (error) {
-    return <div>Error fetching user profile: {error.message}</div>;
+    return <div className="error-message">Ошибка при загрузке профиля: {error.message}</div>;
   }
 
   if (!userProfile) {
-    return <div>Loading...</div>;
+    return <div className="loading-message">Загрузка...</div>;
   }
 
   return (
-    <div>
-      <h1>User Profile</h1>
-      <p>Привет, {userProfile.nickname}</p>
+    <div className="user-profile">
+      <h1 className="profile-title">Привет, {userProfile.nickname}</h1>
       {/* Отображение другой информации о профиле */}
       <ProfileForm userProfile={userProfile} onUpdate={handleProfileUpdate} />
     </div>

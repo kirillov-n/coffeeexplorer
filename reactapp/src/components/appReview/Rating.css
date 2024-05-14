@@ -4,10 +4,10 @@
 
 .star {
     font-size: 24px;
-    color: #ccc;
+    color: #ccc; /* Светло-серый */
     cursor: pointer;
 }
 
 .filled {
-    color: #f4c150;
+    color: #AB806C; /* Коричневый (основной акцент) */
 }

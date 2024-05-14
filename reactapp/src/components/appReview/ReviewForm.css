@@ -3,7 +3,7 @@
     margin: 0 auto;
     padding: 20px;
     border-radius: 10px;
-    background-color: #f5f5f5;
+    background-color: #DDD2C1; /* Светло-серый (вторичный фон) */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -13,6 +13,7 @@
 .review-form h2 {
     font-size: 1.5rem;
     margin-bottom: 20px;
+    color: #8A6552; /* Темно-коричневый (текст) */
 }
 
 .form-group {
@@ -24,6 +25,7 @@
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    color: #8A6552; /* Темно-коричневый (текст) */
 }
 
 .form-group input[type="number"],
@@ -36,14 +38,33 @@
     border: 1px solid #ccc;
 }
 
+.form-group-file {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.form-group-file label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #8A6552; /* Темно-коричневый (текст) */
+}
+
+.form-group-file input[type="file"] {
+    width: 100%;
+    padding: 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
 .form-group textarea {
     resize: vertical;
 }
 
-button[type="submit"] {
+.review-form button[type="submit"] {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #AB806C; /* Коричневый (основной акцент) */
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -52,6 +73,6 @@ button[type="submit"] {
     transition: background-color 0.3s;
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
+.review-form button[type="submit"]:hover {
+    background-color: #8A6552; /* Темно-коричневый (текст) */
 }

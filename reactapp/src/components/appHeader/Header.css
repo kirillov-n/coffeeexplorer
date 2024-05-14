@@ -1,9 +1,10 @@
 .header-container {
   align-items: center;
   padding: 15px;
+  background-color: #F1E6D6; /* Основной фон */
 }
 
-.profile-button{
+.profile-button {
   float: right;
   display: flex;
   align-items: center;
@@ -13,17 +14,18 @@
 
 .text {
   float: left;
+  color: #8A6552; /* Основной текст */
 }
 
 .main-button {
-  color: #ad8fbe;
+  color: #AB806C; /* Основной акцент */
   text-decoration: none;
   border: none;
   cursor: pointer;
   margin-left: 5vh;
 }
 
-.profile-button img{
+.profile-button img {
   margin-right: 5vh;
   width: 40px;
   height: 40px;
