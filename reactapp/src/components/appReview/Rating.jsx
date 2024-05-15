@@ -10,7 +10,7 @@ const Rating = ({ value, onClick }) => {
                 {stars.map((star) => (
                     <span
                         key={star}
-                        className={star <= value ? "star filled" : "star"}
+                        className={star <= value ? "form_star filled" : "form_star"}
                         onClick={() => onClick(star)}
                     >
                         &#9733;

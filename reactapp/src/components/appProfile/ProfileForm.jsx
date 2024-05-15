@@ -72,13 +72,11 @@ const ProfileForm = ({ userProfile, onUpdate }) => {
       <h2>Редактировать профиль</h2>
       <form onSubmit={handleSubmit} className="profile-form">
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
+          <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email"/>
           {formErrors.email && <span className="error">{formErrors.email}</span>}
         </div>
         <div className="form-group">
-          <label htmlFor="nickname">Никнейм:</label>
-          <input type="text" id="nickname" name="nickname" value={formData.nickname} onChange={handleChange} />
+          <input type="text" id="nickname" name="nickname" value={formData.nickname} onChange={handleChange} placeholder="nickname"/>
           {formErrors.nickname && <span className="error">{formErrors.nickname}</span>}
         </div>
         <div className="form-group">
@@ -104,46 +102,49 @@ const ProfileForm = ({ userProfile, onUpdate }) => {
         </div>
         <div className="form-group">
           <label htmlFor="avg_bill">Средний чек:</label>
-          <input type="number" id="avg_bill" name="avg_bill" value={formData.avg_bill} onChange={handleChange} />
+          <input type="number" id="avg_bill" name="avg_bill" value={formData.avg_bill} onChange={handleChange} placeholder="Сколько вы готовы потратить?"/>
         </div>
         <div className="form-group">
-          <label htmlFor="veg_positions">Вегетарианские позиции:</label>
+          <p>Что про тебя или нужно тебе в кофейне</p>
+        </div>
+        <div className="form-group checkbox-group">
+          <label htmlFor="veg_positions">Я веган</label>
           <input type="checkbox" id="veg_positions" name="veg_positions" checked={formData.veg_positions} onChange={handleChange} />
         </div>
-        <div className="form-group">
-          <label htmlFor="alt_brewing">Альтернативные способы заваривания:</label>
+        <div className="form-group checkbox-group">
+          <label htmlFor="alt_brewing">Альтернативное заваривание</label>
           <input type="checkbox" id="alt_brewing" name="alt_brewing" checked={formData.alt_brewing} onChange={handleChange} />
         </div>
-        <div className="form-group">
-          <label htmlFor="alt_milk">Альтернативное молоко:</label>
+        <div className="form-group checkbox-group">
+          <label htmlFor="alt_milk">Альтернативное молоко</label>
           <input type="checkbox" id="alt_milk" name="alt_milk" checked={formData.alt_milk} onChange={handleChange} />
         </div>
-        <div className="form-group">
-          <label htmlFor="small_pets">Маленькие домашние животные:</label>
+        <div className="form-group checkbox-group">
+          <label htmlFor="small_pets">Маленькая собака</label>
           <input type="checkbox" id="small_pets" name="small_pets" checked={formData.small_pets} onChange={handleChange} />
         </div>
-        <div className="form-group">
-          <label htmlFor="big_pets">Большие домашние животные:</label>
+        <div className="form-group checkbox-group">
+          <label htmlFor="big_pets">Больая собака</label>
           <input type="checkbox" id="big_pets" name="big_pets" checked={formData.big_pets} onChange={handleChange} />
         </div>
-        <div className="form-group">
-          <label htmlFor="food">Еда:</label>
+        <div className="form-group checkbox-group">
+          <label htmlFor="food">Кухня</label>
           <input type="checkbox" id="food" name="food" checked={formData.food} onChange={handleChange} />
         </div>
-        <div className="form-group">
-          <label htmlFor="non_coffee_drink">Не кофейные напитки:</label>
+        <div className="form-group checkbox-group">
+          <label htmlFor="non_coffee_drink">Не кофейные напитки</label>
           <input type="checkbox" id="non_coffee_drink" name="non_coffee_drink" checked={formData.non_coffee_drink} onChange={handleChange} />
         </div>
-        <div className="form-group">
-          <label htmlFor="decaf">Без кофеина:</label>
+        <div className="form-group checkbox-group">
+          <label htmlFor="decaf">Декаф</label>
           <input type="checkbox" id="decaf" name="decaf" checked={formData.decaf} onChange={handleChange} />
         </div>
-        <div className="form-group">
-          <label htmlFor="wifi">Wi-Fi:</label>
+        <div className="form-group checkbox-group">
+          <label htmlFor="wifi">Wi-Fi</label>
           <input type="checkbox" id="wifi" name="wifi" checked={formData.wifi} onChange={handleChange} />
         </div>
-        <div className="form-group">
-          <label htmlFor="place_for_work">Место для работы:</label>
+        <div className="form-group checkbox-group">
+          <label htmlFor="place_for_work">Поработать</label>
           <input type="checkbox" id="place_for_work" name="place_for_work" checked={formData.place_for_work} onChange={handleChange} />
         </div>
         <div className="form-group">

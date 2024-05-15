@@ -80,6 +80,16 @@ const ReviewForm = ({ establishmentID, isAuthenticated, user, onReviewSubmit }) 
                 <Rating value={formData.rating} onClick={handleRatingChange} />
             </div>
             <div className="form-group">
+                <input
+                    type="file"
+                    id="picture"
+                    name="picture"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    placeholder="Изображение"
+                />
+            </div>
+            <div className="form-group">
                 <textarea
                     id="body"
                     name="body"
@@ -90,17 +100,7 @@ const ReviewForm = ({ establishmentID, isAuthenticated, user, onReviewSubmit }) 
                     placeholder="Опишите плюсы и минусы"
                 ></textarea>
             </div>
-            <div className="form-group-file">
-                <input
-                    type="file"
-                    id="picture"
-                    name="picture"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    placeholder="Изображение"
-                />
-            </div>
-                <button type="submit">Отправить</button>
+            <button type="submit">Отправить</button>
         </form>
     );
 };

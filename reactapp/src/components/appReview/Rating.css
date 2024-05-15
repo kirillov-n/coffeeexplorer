@@ -1,7 +1,5 @@
 .rating-container {
     display: flex;
-    justify-content: center; /* Центрируем по горизонтали */
-    align-items: center; /* Центрируем по вертикали */
     width: 100%; /* Убедитесь, что контейнер занимает всю ширину */
 }
 
@@ -9,7 +7,7 @@
     display: flex; /* Используем flexbox для контейнера звёзд */
 }
 
-.star {
+.form_star {
     font-size: 45px; /* Увеличенный размер звёзд */
     color: #ccc; /* Светло-серый */
     cursor: pointer;

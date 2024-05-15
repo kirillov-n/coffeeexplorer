@@ -133,7 +133,17 @@ const Details = () => {
                                     <p>Веганское меню: {establishment.veg_positions ? "Да" : "Нет"}</p>
                                     <p>Альтернативные методы заваривания: {establishment.alt_brewing ? "Да" : "Нет"}</p>
                                     <p>Альтернативное молоко: {establishment.alt_milk ? "Да" : "Нет"}</p>
-                                    <p>Догфрендли: {establishment.small_pets ? "Можно с маленькими собаками" : "Нет"} {establishment.big_pets ? "Можно с большими собаками" : "Нет"}</p>
+                                    <p>
+                                        Догфрендли:{" "}
+                                        {establishment.small_pets && establishment.big_pets
+                                            ? "Можно с маленькими и большими собаками"
+                                            : establishment.small_pets
+                                            ? "Можно с маленькими собаками"
+                                            : establishment.big_pets
+                                            ? "Можно с большими собаками"
+                                            : "Нет"}
+                                    </p>
+
                                     <p>Кухня: {establishment.food ? "Да" : "Нет"}</p>
                                 </div>
                                 <div>
@@ -157,14 +167,21 @@ const Details = () => {
                             Открыть на картах Яндекс
                         </button>
                     </div>
+                    <div>
                     {/* Похожие заведения */}
-                    {renderCloseEstablishments()}
+                        {renderCloseEstablishments()}
+                    </div>
                     {/* Форма для отправки отзыва */}
                     {isAuthenticated && userProfile && (
-                        <ReviewForm establishmentID={establishmentID} isAuthenticated={isAuthenticated} user={userProfile} onReviewSubmit={handleReviewSubmit} />
+                        <div className="review-form-container">
+                            <ReviewForm establishmentID={establishmentID} isAuthenticated={isAuthenticated} user={userProfile} onReviewSubmit={handleReviewSubmit} />
+                        </div>
                     )}
                     {/* Список отзывов */}
-                    <ReviewList establishmentID={establishmentID} />
+                    <h2 className="review-list-header">Отзывы</h2>
+                    <div className="review-list">
+                        <ReviewList establishmentID={establishmentID} />
+                    </div>
                 </div>
             ) : (
                 <p className="loading-message">Загрузка данных...</p>

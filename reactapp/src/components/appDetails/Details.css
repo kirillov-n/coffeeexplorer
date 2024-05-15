@@ -10,9 +10,12 @@
 }
 
 .establishment-name {
-  font-size: 24px;
+  text-align: left;
+  width: 100%;
+  font-size: 30px;
   margin-bottom: 10px;
   color: #8A6552; /* Основной тёмный текст */
+  display:inline-block;
 }
 
 .info {
@@ -25,7 +28,7 @@
   height: auto;
   margin-right: 20px;
   border-radius: 5px;
-  border: 1px solid #C4A484; /* Граница для изображения */
+  border: none; /* Граница для изображения */
 }
 
 .establishment-description {
@@ -81,7 +84,7 @@
 }
 
 .close-establishments-container {
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .close-establishments-heading {
@@ -105,7 +108,7 @@
   height: 150px; /* Установите фиксированную высоту */
   border-radius: 8px;
   margin-bottom: 5px;
-  border: 1px solid #C4A484; /* Граница для изображений */
+  border: none; /* Граница для изображений */
   object-fit: cover; /* Обрезать изображение до размеров контейнера */
 }
 
@@ -118,3 +121,78 @@
 .close-establishment-link {
   text-decoration: none;
 }
+
+.review-form-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: -20px;
+  margin-bottom: 20px;
+}
+
+.review-form {
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.review-form h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #8A6552;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input[type="number"],
+.form-group textarea,
+.form-group input[type="file"],
+.form-group label {
+  width: 100%;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.review-form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #AB806C;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.review-form button[type="submit"]:hover {
+  background-color: #8A6552;
+}
+
+@media screen and (min-width: 600px) {
+  .review-form-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .review-form {
+    width: calc(50% - 10px);
+  }
+
+  .review-form:last-child {
+    margin-left: 20px;
+  }
+}
+
+  .review-list {
+    margin-left: -10px;
+    margin-top: -15px;
+  }
+
+  .review-list-header {
+    font-size: 24px;
+    margin-left: 10px;
+    color: #8A6552; /* Основной тёмный текст */
+  }

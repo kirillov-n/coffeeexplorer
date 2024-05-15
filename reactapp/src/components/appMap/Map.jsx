@@ -120,7 +120,7 @@ const App = () => {
               options={
                 {
                   preset: 'islands#circleIcon',
-                  iconColor: 'red',
+                  iconColor: '#ab806c',
                 } }
               properties={{
                 iconContent: 'Я',
@@ -141,7 +141,7 @@ const App = () => {
               iconImageOffset: [-5, -5],
             }}          
             clusters={{
-              preset: "islands#orangeClusterIcons",
+              preset: "islands#brownClusterIcons",
             }}
             defaultFeatures={objectManagerData}
             modules={[

@@ -1,5 +1,5 @@
 .review-form {
-    max-width: 600px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 20px;
     border-radius: 10px;
@@ -13,10 +13,8 @@
     font-size: 1.5rem;
     margin-bottom: 20px;
     color: #8A6552; /* Темно-коричневый (текст) */
-    text-align: left; /* Выравнивание текста влево */
-    margin-left: 10px; /* Дополнительный отступ слева */
+    text-align: left;
 }
-
 
 .form-group {
     margin-bottom: 20px;
@@ -37,7 +35,7 @@
     padding: 10px;
     font-size: 1rem;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: none;
 }
 
 .form-group-file {

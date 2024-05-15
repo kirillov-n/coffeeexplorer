@@ -46,7 +46,6 @@ const ReviewList = ({ establishmentID }) => {
 
     return (
         <div className="review-list-container">
-            <h2 className="review-list-header">Отзывы</h2>
             {loading ? (
                 <p>Загрузка отзывов...</p>
             ) : (
