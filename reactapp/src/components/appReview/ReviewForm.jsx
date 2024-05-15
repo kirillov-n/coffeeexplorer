@@ -75,7 +75,7 @@ const ReviewForm = ({ establishmentID, isAuthenticated, user, onReviewSubmit }) 
 
     return (
         <form className="review-form" onSubmit={handleSubmit}>
-            <h2>Написать отзыв</h2>
+            <h2>Как вам это место?</h2>
             <div className="form-group">
                 <Rating value={formData.rating} onClick={handleRatingChange} />
             </div>
@@ -87,7 +87,7 @@ const ReviewForm = ({ establishmentID, isAuthenticated, user, onReviewSubmit }) 
                     value={formData.body}
                     onChange={handleChange}
                     required
-                    placeholder="Текст отзыва"
+                    placeholder="Опишите плюсы и минусы"
                 ></textarea>
             </div>
             <div className="form-group-file">

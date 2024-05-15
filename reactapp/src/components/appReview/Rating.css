@@ -1,9 +1,16 @@
+.rating-container {
+    display: flex;
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    width: 100%; /* Убедитесь, что контейнер занимает всю ширину */
+}
+
 .rating {
-    display: inline-block;
+    display: flex; /* Используем flexbox для контейнера звёзд */
 }
 
 .star {
-    font-size: 24px;
+    font-size: 45px; /* Увеличенный размер звёзд */
     color: #ccc; /* Светло-серый */
     cursor: pointer;
 }

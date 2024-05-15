@@ -51,6 +51,9 @@
   cursor: pointer;
   border-radius: 5px;
   text-decoration: none;
+  left: 0; 
+  margin-left: 0;
+  display:  block;
 }
 
 .map-button:hover {
@@ -58,12 +61,12 @@
 }
 
 .establishment-features {
-  border: 1px solid #C4A484; /* Граница для характеристик */
+  border: none; /* Граница для характеристик */
   border-radius: 5px;
   display: flex;
   margin: 5px;
   padding: 10px;
-  background-color: #F1E6D6; /* Светлый фон для характеристик */
+  background-color: #f9f4ef; /* Светлый фон для характеристик */
 }
 
 .establishment-features div {
@@ -99,7 +102,7 @@
 
 .close-establishment-image {
   width: 120px;
-  height: 120px; /* Установите фиксированную высоту */
+  height: 150px; /* Установите фиксированную высоту */
   border-radius: 8px;
   margin-bottom: 5px;
   border: 1px solid #C4A484; /* Граница для изображений */

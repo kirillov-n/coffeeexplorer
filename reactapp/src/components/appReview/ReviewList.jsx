@@ -26,6 +26,24 @@ const ReviewList = ({ establishmentID }) => {
         fetchReviews();
     }, [establishmentID]);
 
+    const renderStars = (rating) => {
+        const totalStars = 5;
+        const stars = [];
+
+        for (let i = 1; i <= totalStars; i++) {
+            stars.push(
+                <span key={i} className={`star ${i <= rating ? 'filled' : ''}`}>&#9733;</span>
+            );
+        }
+
+        return <div className="rating">{stars}</div>;
+    };
+
+    const formatDate = (dateString) => {
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        return new Date(dateString).toLocaleDateString('ru-RU', options).replace(' г.', '');
+    };
+
     return (
         <div className="review-list-container">
             <h2 className="review-list-header">Отзывы</h2>
@@ -36,17 +54,14 @@ const ReviewList = ({ establishmentID }) => {
                     {reviews.map(review => (
                         <li key={review.PostID} className="review-item">
                             <div>
-                                <p className="user-nickname">Пользователь: {review.user.nickname}</p>
-                                <p>Рейтинг: {review.rating}</p>
+                                <p className="user-nickname">{review.user.nickname}</p>
+                                <p className="date">{formatDate(review.time_created)}</p>
+                                <div className="review-rating">{renderStars(review.rating)}</div>
                                 <p>{review.body}</p>
                                 {review.picture && (
                                     <div>
                                         <img src={review.picture} alt="Отзыв" className="review-image" />
                                     </div>
-                                )}
-                                <p>Дата создания: {new Date(review.time_created).toLocaleString()}</p>
-                                {review.time_edited && review.time_created !== review.time_edited && (
-                                    <p>Дата редактирования: {new Date(review.time_edited).toLocaleString()}</p>
                                 )}
                             </div>
                         </li>

@@ -3,18 +3,20 @@
     margin: 0 auto;
     padding: 20px;
     border-radius: 10px;
-    background-color: #DDD2C1; /* Светло-серый (вторичный фон) */
+    background-color: #f9f4ef; /* Светло-серый (вторичный фон) */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .review-form h2 {
     font-size: 1.5rem;
     margin-bottom: 20px;
     color: #8A6552; /* Темно-коричневый (текст) */
+    text-align: left; /* Выравнивание текста влево */
+    margin-left: 10px; /* Дополнительный отступ слева */
 }
+
 
 .form-group {
     margin-bottom: 20px;
