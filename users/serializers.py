@@ -57,6 +57,9 @@ class UserProfileSerializer(serializers.Serializer):
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
+        recommendations = serializers.ListField(
+        child=serializers.IntegerField()
+    )
         fields = ["userID", "email", "nickname", "sex", "birthdate", "occupation", "is_business", "password", "date_joined", "favourites", "avg_bill", "veg_positions", "alt_brewing", "alt_milk", "small_pets", "big_pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work", "recommendations"]
     def create(self, validated_data):
         user = User(
