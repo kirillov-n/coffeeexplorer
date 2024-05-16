@@ -32,7 +32,7 @@ const App = () => {
         if (response.status === 200) {
           setIsAuthorized(true);
           setUserID(response.data.userID);
-          setRecommendations(response.data.recommendations);
+          setRecommendations(response.data.recommendations || []);
           
         }
       } catch (error) {
@@ -140,11 +140,11 @@ const App = () => {
   return (
     <YMaps query={{ apikey: process.env.REACT_APP_YANDEX_MAPS_API_KEY, suggest_apikey: process.env.REACT_APP_YANDEX_MAPS_SUGGEST_API_KEY }}>
       <div className="page-container">
-        {isAuthorized && recommendations.length > 0 && (
+          {isAuthorized && Array.isArray(recommendations) && recommendations.length > 0 && (
           <div className="recommendations-container">
             <h1>Вам должно понравиться</h1>
             <div className="recommendations-container-recs">
-              {recEstablishments .map(est => (
+              {recEstablishments.map(est => (
                 <div key={est.establishmentID} className="recommendation-card">
                   <img src={est.picture} alt={est.name} className="recommendation-image" />
                   <div className="recommendation-info">

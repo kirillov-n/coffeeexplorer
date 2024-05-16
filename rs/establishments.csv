@@ -1,50 +1,20 @@
-name,avg_bill,veg_positions,alt_brewing,alt_milk,pets,food,non_coffee_drink,decaf,wifi,place_for_work
-ЗеленыйУгол,250,1,1,1,1,1,1,1,1,1
-ЭкоКофе,180,1,1,1,0,1,1,0,1,1
-СпокойнаяБеседа,150,1,0,0,1,1,1,1,1,1
-АльтернативныйАромат,200,0,1,0,0,1,0,1,1,0
-ГурманскийВыбор,300,1,1,1,1,1,1,0,1,1
-УютнаяПауза,120,0,0,1,1,1,1,1,0,1
-ТеплаяКружка,170,1,1,0,0,1,1,1,1,1
-ЭлитноеЭспрессо,220,0,0,0,1,1,0,0,1,0
-ТравянаяИстория,190,1,1,1,0,0,0,1,0,1
-ЗеленыйОазис,160,1,0,1,1,0,1,1,0,1
-АроматнаяОаза,220,1,0,1,0,1,0,1,1,1
-ЗелёноеНастроение,180,0,1,1,1,1,1,0,1,1
-ЭкоКафе2,200,1,0,0,0,1,1,1,1,0
-УютнаяБеседа,250,0,1,1,0,1,0,0,1,1
-АльтернативнаяСтратегия,170,1,0,0,1,0,1,1,0,1
-ГастрономическоеВдохновение,210,0,1,0,0,1,1,0,1,1
-СпокойнаяКружка,190,1,0,1,1,0,0,1,0,1
-ОазисВКружке,140,1,1,0,1,1,1,1,1,1
-ЭлитныйЭспрессо,280,1,1,1,1,1,1,0,1,1
-НепринужденнаяБеседа,150,0,0,1,1,1,1,0,0,1
-АльтернативнаяКофейня,200,1,1,0,0,1,0,1,1,0
-ЗеленыйОтдых,170,0,1,0,0,1,0,1,0,1
-Кофейня1,230,1,0,0,1,1,1,0,1,1
-Заведение5,200,0,1,1,0,1,1,1,0,1
-ГурманскийОтдых,180,1,1,1,0,0,0,1,0,1
-Кофейня2,240,1,0,1,1,0,1,1,0,1
-ПаузаВКружке,190,1,1,0,0,1,1,0,1,1
-ЭкоБар,200,0,1,1,0,1,1,1,0,1
-АроматноеСобытие,180,1,1,1,0,0,0,1,0,1
-КружкаВСпокойствии,230,1,0,0,1,1,0,1,1,1
-ВдохновениеОтдыха,150,0,1,1,0,0,1,1,1,0
-ЗеленаяАльтернатива,180,0,1,1,0,1,0,1,0,1
-ОазисГармонии,210,1,1,0,0,1,0,1,1,0
-КафеДушевнойБеседы,170,1,0,1,1,1,1,0,1,1
-АромаОтдыха,220,0,0,0,1,1,0,0,1,0
-ЭкоКофе3,190,1,1,1,0,0,1,0,0,1
-ПаузаДуши,200,0,0,1,1,0,1,1,0,1
-Кофейня3,230,1,1,0,0,1,1,0,1,1
-СпокойныйВыбор,160,0,0,1,0,1,1,0,1,1
-ЭкоБеседа,180,1,1,0,0,1,1,1,0,0
-УютныйОтдых,210,0,1,0,1,0,0,0,1,1
-КофеиВдохновение,200,1,0,0,1,1,0,1,1,1
-КофейныйРелакс,170,1,0,1,1,1,1,0,1,1
-ОчарованиеАльтернативы,220,0,1,0,0,1,0,1,1,0
-АромаАльтернативы,190,1,1,1,0,0,1,1,1,0
-КружкаПокоя,250,1,0,1,0,1,1,1,0,1
-ЭлитныйОтдых,190,1,0,1,1,0,0,1,1,0
-АроматОтдыха,220,1,1,0,0,1,1,0,1,1
-ЗеленыйПокой,160,0,1,1,0,1,0,1,0,1
+"establishmentID","name","avg_bill","veg_positions","alt_brewing","alt_milk","food","non_coffee_drink","decaf","wifi","place_for_work","big_pets","small_pets"
+1,"Просто Чёрный","300",False,True,True,True,True,False,True,False,False,False
+6,"STIM","425",True,True,True,True,True,False,False,False,False,False
+7,"Зелёные Люди","480",True,True,True,True,True,True,False,True,False,False
+9,"Кофе Рейсер","200",True,True,True,True,True,False,False,False,False,True
+12,"Babka Bakery","354",False,True,False,False,True,True,True,False,True,False
+13,"Tour Coffee","302",False,False,True,True,False,True,True,False,True,False
+14,"Uslada","172",False,False,True,True,True,True,True,False,True,False
+15,"ТЧК","483",True,True,False,True,True,True,True,True,False,True
+16,"Skuratov","216",True,False,False,True,True,True,True,True,True,True
+17,"Коммуна","434",True,False,True,True,True,True,True,True,True,True
+18,"marseille coffee","212",False,False,True,True,True,True,True,False,True,True
+19,"Maybe Tokyo","479",False,False,True,True,True,True,True,False,True,False
+20,"Péché café","292",False,False,True,True,True,True,True,False,True,True
+21,"Слой х Вспышка","366",True,True,False,True,True,True,True,True,False,False
+22,"Zoe","327",False,False,True,True,True,True,True,False,True,False
+23,"Skuratov","388",True,True,True,True,True,True,True,True,True,True
+24,"Hand","162",False,False,True,True,True,True,True,False,True,False
+25,"Colors","173",False,True,False,True,True,True,True,True,False,False
+26,"Aster","249",True,True,True,True,True,True,True,True,False,True

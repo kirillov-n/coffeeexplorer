@@ -72,7 +72,7 @@ class Posts(models.Model):
         verbose_name_plural = "Публикации"
 
     def __str__(self):
-        return f"Отзыв {self.user.nickname} об {self.establishment.name}"
+        return f"Отзыв {self.user} об {self.establishment.name}"
 
 
 class Comments(models.Model):
@@ -88,4 +88,4 @@ class Comments(models.Model):
         verbose_name_plural = "Комментарии"
 
     def __str__(self):
-        return f"Комментарий {self.user.nickname} к посту {self.post.user.nickname}"
+        return f"Комментарий {self.user} к посту {self.post.user}"

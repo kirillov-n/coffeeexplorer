@@ -29,6 +29,7 @@
   margin-right: 20px;
   border-radius: 5px;
   border: none; /* Граница для изображения */
+  object-fit: cover;
 }
 
 .establishment-description {

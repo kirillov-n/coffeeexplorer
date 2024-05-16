@@ -79,8 +79,11 @@
   height: calc(100vh - 15vh);
   padding: 10px;
   background-color: none;
+  border-radius: 10px;
 }
-
+.recommendations-container-recs::-webkit-scrollbar {
+  display: none;
+}
 .recommendations-container h1{
   color:#755d52;
   font-size: 14pt;
