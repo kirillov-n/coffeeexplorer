@@ -22,9 +22,9 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     userID = models.BigAutoField(verbose_name="Id пользователя", primary_key=True, unique=True)
     email = models.EmailField(verbose_name="Email адрес", unique=True)
     nickname = models.CharField(verbose_name="Никнейм")
-    sex = models.CharField(verbose_name="Пол", choices=SEX_CHOICES)
+    sex = models.CharField(verbose_name="Пол", choices=SEX_CHOICES) # type: ignore
     birthdate = models.DateField(verbose_name="Дата рождения")
-    occupation = models.CharField(verbose_name="Занятость", choices=OCCUPATION_CHOICES)
+    occupation = models.CharField(verbose_name="Занятость", choices=OCCUPATION_CHOICES) # type: ignore
     date_joined = models.DateTimeField(verbose_name="Дата регистрации", auto_now_add=True)
     favourites = models.ManyToManyField(Establishments, verbose_name="Избранное", blank=True, null=True)  # многие ко многим
     is_business = models.BooleanField(verbose_name="Бизнес аккаунт", default=False)

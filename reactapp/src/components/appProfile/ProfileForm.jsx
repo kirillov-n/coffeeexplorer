@@ -124,7 +124,7 @@ const ProfileForm = ({ userProfile, onUpdate }) => {
           <input type="checkbox" id="small_pets" name="small_pets" checked={formData.small_pets} onChange={handleChange} />
         </div>
         <div className="form-group checkbox-group">
-          <label htmlFor="big_pets">Больая собака</label>
+          <label htmlFor="big_pets">Большая собака</label>
           <input type="checkbox" id="big_pets" name="big_pets" checked={formData.big_pets} onChange={handleChange} />
         </div>
         <div className="form-group checkbox-group">

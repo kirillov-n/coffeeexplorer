@@ -33,3 +33,5 @@ print('Рекомендация для:', user['userID'][0])
 for i in range(len(distances.flatten())):
     print('{0}: {1}, с расстоянием {2}.'.format(i + 1, establishments['establishmentID'].iloc[indices.flatten()[i]],
                                                 distances.flatten()[i]))
+
+
