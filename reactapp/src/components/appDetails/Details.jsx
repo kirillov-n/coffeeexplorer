@@ -5,6 +5,8 @@ import { API_URL } from "../../index";
 import "./Details.css";
 import ReviewList from "../appReview/ReviewList";
 import ReviewForm from "../appReview/ReviewForm";
+import HeartIcon from "../../media/heart.svg";
+import HeartIconFilled from "../../media/heart_filled.svg";
 
 const Details = () => {
     const { establishmentID } = useParams();
@@ -14,21 +16,21 @@ const Details = () => {
     const [userProfile, setUserProfile] = useState(null);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchUserProfile = async () => {
-            try {
-                const token = localStorage.getItem('accessToken');
-                const response = await axios.get(`${API_URL}users/profile/`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-                setUserProfile(response.data);
-            } catch (error) {
-                setError(error);
-            }
-        };
+    const fetchUserProfile = async () => {
+        try {
+            const token = localStorage.getItem('accessToken');
+            const response = await axios.get(`${API_URL}users/profile/`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            setUserProfile(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
 
+    useEffect(() => {
         fetchUserProfile();
     }, []);
 
@@ -75,6 +77,7 @@ const Details = () => {
             setIsAuthenticated(true);
         }
     }, []);
+    
 
     const handleReviewSubmit = async (reviewData) => {
         try {
@@ -94,6 +97,40 @@ const Details = () => {
         }
     };
 
+    const handleFavoriteClick = async () => {
+        if (!isAuthenticated || !userProfile) return;
+    
+        try {
+            const token = localStorage.getItem('accessToken');
+            const establishmentUrl = `${API_URL}coffeeexplorer_app/establishments/${establishmentID}/`;
+    
+            const updatedFavorites = userProfile.favourites.map(url => {
+                // Если уже URL, возвращаем его, иначе формируем URL из числового значения
+                return typeof url === 'string' ? url : `${API_URL}coffeeexplorer_app/establishments/${url}/`;
+            });
+    
+            const index = updatedFavorites.indexOf(establishmentUrl);
+            if (index !== -1) {
+                updatedFavorites.splice(index, 1); // Удаляем избранное, если уже в списке
+            } else {
+                updatedFavorites.push(establishmentUrl); // Добавляем в избранное, если отсутствует
+            }
+            
+            const response = await axios.patch(`${API_URL}users/users/${userProfile.userID}/`, { favourites: updatedFavorites }, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            });
+    
+            if (response.status === 200) {
+                setUserProfile({ ...userProfile, favourites: updatedFavorites });
+            }
+        } catch (error) {
+            console.error('Error updating favorites:', error);
+        }
+    };
+    
     const renderCloseEstablishments = () => {
         if (!closeEstablishments || closeEstablishments.length === 0) return null;
 
@@ -118,7 +155,18 @@ const Details = () => {
         <div className="details-container">
             {establishment ? (
                 <div className="establishment-details">
-                    <h1 className="establishment-name">{establishment.name}</h1>
+                    <div className="establishment-header">
+                        <h1 className="establishment-name">{establishment.name}</h1>
+                        {isAuthenticated && userProfile && (
+                            <button className="favorite-button" onClick={handleFavoriteClick}>
+                                <img
+                                    src={userProfile.favourites.includes(`${API_URL}coffeeexplorer_app/establishments/${establishmentID}/`) ? HeartIconFilled : HeartIcon}
+                                    alt="Favorite"
+                                    className="favorite-icon"
+                                />
+                            </button>
+                        )}
+                    </div>
                     <div className="info">
                         <img src={establishment.picture} alt={establishment.name} className="main-establishment-image" />
                         <div>

@@ -28,7 +28,7 @@ class UserProfileSerializer(serializers.Serializer):
     birthdate = serializers.DateField()
     occupation = serializers.CharField()
     date_joined = serializers.DateTimeField()
-    favourites = serializers.PrimaryKeyRelatedField(many=True, queryset=Establishments.objects.all())
+    favourites = serializers.PrimaryKeyRelatedField(queryset=Establishments.objects.all(), many=True)
     is_business = serializers.BooleanField()
     is_staff = serializers.BooleanField()
     is_active = serializers.BooleanField()

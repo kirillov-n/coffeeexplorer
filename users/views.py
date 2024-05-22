@@ -78,7 +78,7 @@ class PostViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        establishmentID = self.request.query_params.get('establishment', None)
+        establishmentID = self.request.query_params.get('establishment', None) # type: ignore
         if establishmentID:
             try:
                 establishmentID = int(establishmentID)  # Преобразуем в число

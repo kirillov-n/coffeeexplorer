@@ -197,3 +197,16 @@
     margin-left: 10px;
     color: #8A6552; /* Основной тёмный текст */
   }
+
+  .favorite-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.favorite-icon {
+    width: 24px;
+    height: 24px;
+}
