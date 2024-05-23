@@ -86,6 +86,8 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
+    post = PostSerializer(read_only=True)
+    postID = serializers.PrimaryKeyRelatedField(source='post', queryset=Posts.objects.all(), write_only=True)
     class Meta:
         model = Comments
-        fields = ["commentID", "user", "post", "body", "time_created", "time_edited"]
+        fields = ["commentID", "user", "post", "postID", "body", "time_created", "time_edited"]

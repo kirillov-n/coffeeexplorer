@@ -39,12 +39,12 @@ const Details = () => {
             try {
                 const response = await fetch(`${API_URL}coffeeexplorer_app/establishments/${establishmentID}/`);
                 if (!response.ok) {
-                    throw new Error('Failed to fetch data');
+                    throw new Error('Ошибка получения данных');
                 }
                 const data = await response.json();
                 setEstablishment(data);
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Ошибка получения данных:', error);
             }
         };
 
@@ -58,13 +58,13 @@ const Details = () => {
                 const closeEstablishmentData = await Promise.all(closeEstablishmentIds.map(async (id) => {
                     const response = await fetch(`${API_URL}coffeeexplorer_app/establishments/${id}/`);
                     if (!response.ok) {
-                        throw new Error('Failed to fetch close establishment data');
+                        throw new Error('Ошибка получения данных');
                     }
                     return response.json();
                 }));
                 setCloseEstablishments(closeEstablishmentData);
             } catch (error) {
-                console.error('Error fetching close establishment data:', error);
+                console.error('Ошибка получения данных:', error);
             }
         };
 
@@ -89,11 +89,11 @@ const Details = () => {
                 },
             });
             if (!response.data.success) {
-                throw new Error('Failed to submit review');
+                throw new Error('Ошибка в отправке отзыва');
             }
             console.log("Отзыв успешно отправлен на сервер");
         } catch (error) {
-            console.error('Error submitting review:', error);
+            console.error('Ошибка в отправке отзыва:', error);
         }
     };
 
@@ -105,7 +105,7 @@ const Details = () => {
             const establishmentUrl = `${API_URL}coffeeexplorer_app/establishments/${establishmentID}/`;
     
             const updatedFavorites = userProfile.favourites.map(url => {
-                // Если уже URL, возвращаем его, иначе формируем URL из числового значения
+                // Если значение уже в URL формате, возвращаем его, иначе формируем URL из числового значения
                 return typeof url === 'string' ? url : `${API_URL}coffeeexplorer_app/establishments/${url}/`;
             });
     
@@ -127,7 +127,7 @@ const Details = () => {
                 setUserProfile({ ...userProfile, favourites: updatedFavorites });
             }
         } catch (error) {
-            console.error('Error updating favorites:', error);
+            console.error('Ошибка при добавлении в избранное:', error);
         }
     };
     
@@ -136,7 +136,7 @@ const Details = () => {
 
         return (
             <div className="close-establishments-container">
-                <h2 className="close-establishments-heading">Похожие заведения:</h2>
+                <h2 className="close-establishments-heading">Вам также могут понравиться:</h2>
                 <div className="close-establishments">
                     {closeEstablishments.map((establishment) => (
                         <Link to={`/details/${establishment.establishmentID}`} key={establishment.establishmentID} className="close-establishment-link">
@@ -155,82 +155,82 @@ const Details = () => {
         <div className="details-container">
             {establishment ? (
                 <div className="establishment-details">
-                    <div className="establishment-header">
-                        <h1 className="establishment-name">{establishment.name}</h1>
-                        {isAuthenticated && userProfile && (
-                            <button className="favorite-button" onClick={handleFavoriteClick}>
-                                <img
-                                    src={userProfile.favourites.includes(`${API_URL}coffeeexplorer_app/establishments/${establishmentID}/`) ? HeartIconFilled : HeartIcon}
-                                    alt="Favorite"
-                                    className="favorite-icon"
-                                />
-                            </button>
-                        )}
-                    </div>
-                    <div className="info">
-                        <img src={establishment.picture} alt={establishment.name} className="main-establishment-image" />
-                        <div>
-                            <p className="establishment-description">{establishment.description}</p>
-                            <p className="address-details">
-                                {establishment.address.city.name}, ст. метро {establishment.address.metro_station.name},{" "}
-                                {establishment.address.street} {establishment.address.building}
-                            </p>
-                            <div className="establishment-features">
-                                <div>
-                                    <p>Средний чек: {establishment.avg_bill}₽</p>
-                                    <p>Веганское меню: {establishment.veg_positions ? "Да" : "Нет"}</p>
-                                    <p>Альтернативные методы заваривания: {establishment.alt_brewing ? "Да" : "Нет"}</p>
-                                    <p>Альтернативное молоко: {establishment.alt_milk ? "Да" : "Нет"}</p>
-                                    <p>
-                                        Догфрендли:{" "}
-                                        {establishment.small_pets && establishment.big_pets
-                                            ? "Можно с маленькими и большими собаками"
-                                            : establishment.small_pets
-                                            ? "Можно с маленькими собаками"
-                                            : establishment.big_pets
-                                            ? "Можно с большими собаками"
-                                            : "Нет"}
-                                    </p>
-
-                                    <p>Кухня: {establishment.food ? "Да" : "Нет"}</p>
-                                </div>
-                                <div>
-                                    <p>Не кофейные напитки: {establishment.non_coffee_drink ? "Да" : "Нет"}</p>
-                                    <p>Кофе без кофеина: {establishment.decaf ? "Да" : "Нет"}</p>
-                                    <p>Wi-Fi: {establishment.wifi ? "Да" : "Нет"}</p>
-                                    <p>Места для работы: {establishment.place_for_work ? "Да" : "Нет"}</p>
-                                </div>
+                <div className="establishment-header">
+                    <h1 className="establishment-name">{establishment.name}</h1>
+                    {isAuthenticated && userProfile && (
+                        <button className="favorite-button" onClick={handleFavoriteClick}>
+                            <img
+                                src={userProfile.favourites.includes(`${API_URL}coffeeexplorer_app/establishments/${establishmentID}/`) ? HeartIconFilled : HeartIcon}
+                                alt="Favorite"
+                                className="favorite-icon"
+                            />
+                        </button>
+                    )}
+                </div>
+                <div className="info">
+                    <img src={establishment.picture} alt={establishment.name} className="main-establishment-image" />
+                    <div>
+                        <p className="establishment-description">{establishment.description}</p>
+                        <p className="address-details">
+                            {establishment.address.city.name}, ст. метро {establishment.address.metro_station.name},{" "}
+                            {establishment.address.street} {establishment.address.building}
+                        </p>
+                        <div className="establishment-features">
+                            <div>
+                                <p>Средний чек: {establishment.avg_bill}₽</p>
+                                <p>Specialty кофе: {establishment.specialty_coffee ? "Да" : "Нет"}</p>
+                                <p>Веганское меню: {establishment.veg_positions ? "Да" : "Нет"}</p>
+                                <p>Альтернативные методы заваривания: {establishment.alt_brewing ? "Да" : "Нет"}</p>
+                                <p>Альтернативное молоко: {establishment.alt_milk ? "Да" : "Нет"}</p>
+                                <p>
+                                    Догфрендли:{" "}
+                                    {establishment.small_pets && establishment.big_pets
+                                        ? "Можно с маленькими и большими собаками"
+                                        : establishment.small_pets
+                                        ? "Можно с маленькими собаками"
+                                        : establishment.big_pets
+                                        ? "Можно с большими собаками"
+                                        : "Нет"}
+                                </p>
+                                <p>Кухня: {establishment.food ? "Да" : "Нет"}</p>
+                            </div>
+                            <div>
+                                <p>Не кофейные напитки: {establishment.non_coffee_drink ? "Да" : "Нет"}</p>
+                                <p>Кофе без кофеина: {establishment.decaf ? "Да" : "Нет"}</p>
+                                <p>Wi-Fi: {establishment.wifi ? "Да" : "Нет"}</p>
+                                <p>Места для работы: {establishment.place_for_work ? "Да" : "Нет"}</p>
                             </div>
                         </div>
                     </div>
-                    {/* Кнопка открытия на карте */}
-                    <div className="map-button-container">
-                        <button
-                            className="map-button"
-                            onClick={() => {
-                                const mapUrl = `https://yandex.ru/maps/?rtext=~${establishment.address.latitude}%2C${establishment.address.longitude}`;
-                                window.open(mapUrl, "_blank");
-                            }}
-                        >
-                            Открыть на картах Яндекс
-                        </button>
-                    </div>
-                    <div>
-                    {/* Похожие заведения */}
-                        {renderCloseEstablishments()}
-                    </div>
-                    {/* Форма для отправки отзыва */}
-                    {isAuthenticated && userProfile && (
-                        <div className="review-form-container">
-                            <ReviewForm establishmentID={establishmentID} isAuthenticated={isAuthenticated} user={userProfile} onReviewSubmit={handleReviewSubmit} />
-                        </div>
-                    )}
-                    {/* Список отзывов */}
-                    <h2 className="review-list-header">Отзывы</h2>
-                    <div className="review-list">
-                        <ReviewList establishmentID={establishmentID} />
-                    </div>
                 </div>
+                {/* Кнопка открытия на карте */}
+                <div className="map-button-container">
+                    <button
+                        className="map-button"
+                        onClick={() => {
+                            const mapUrl = `https://yandex.ru/maps/?rtext=~${establishment.address.latitude}%2C${establishment.address.longitude}`;
+                            window.open(mapUrl, "_blank");
+                        }}
+                    >
+                        Открыть на картах Яндекс
+                    </button>
+                </div>
+                <div>
+                    {/* Похожие заведения */}
+                    {renderCloseEstablishments()}
+                </div>
+                {/* Форма для отправки отзыва */}
+                {isAuthenticated && userProfile && (
+                    <div className="review-form-container">
+                        <ReviewForm establishmentID={establishmentID} isAuthenticated={isAuthenticated} user={userProfile} onReviewSubmit={handleReviewSubmit} />
+                    </div>
+                )}
+                {/* Список отзывов */}
+                <h2 className="review-list-header">Отзывы</h2>
+                <div className="review-list">
+                    <ReviewList establishmentID={establishmentID} />
+                </div>
+            </div>
             ) : (
                 <p className="loading-message">Загрузка данных...</p>
             )}

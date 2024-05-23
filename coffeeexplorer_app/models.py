@@ -64,6 +64,7 @@ class Establishments(models.Model):
     decaf = models.BooleanField(verbose_name="Наличие декафа")
     wifi = models.BooleanField(verbose_name="Наличие wifi")
     place_for_work = models.BooleanField(verbose_name="Наличие мест для работы")
+    specialty_coffee = models.BooleanField(verbose_name="Наличие specialty кофе")
     close = ArrayField(models.IntegerField(), null=True, blank=True, verbose_name="Похожие заведения")
 
     class Meta:

@@ -2,6 +2,7 @@
   width: 100%;
   height: 100vh;
   padding: 20px;
+  padding-top: 45px;
   background-color: #F1E6D6; /* Светлый фон для контейнера */
 }
 
@@ -9,13 +10,19 @@
   margin-bottom: 40px;
 }
 
+.establishment-header {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  justify-content: flex-start; 
+  align-items: center;
+}
+
 .establishment-name {
   text-align: left;
-  width: 100%;
   font-size: 30px;
   margin-bottom: 10px;
-  color: #8A6552; /* Основной тёмный текст */
-  display:inline-block;
+  color: #8A6552;
 }
 
 .info {
@@ -199,14 +206,16 @@
   }
 
   .favorite-button {
+    align-self: flex-start;
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-    margin-left: 10px;
+    margin-left: 5px;
+    align-items: center;
 }
 
 .favorite-icon {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
 }

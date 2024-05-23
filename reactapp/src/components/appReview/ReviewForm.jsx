@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./ReviewForm.css"; // Подключение файла стилей
-import Rating from "./Rating"; // Импортируем компонент Rating
+import "./ReviewForm.css";
+import Rating from "./Rating";
 
 const ReviewForm = ({ establishmentID, isAuthenticated, user, onReviewSubmit }) => {
     const [formData, setFormData] = useState({
@@ -40,7 +40,6 @@ const ReviewForm = ({ establishmentID, isAuthenticated, user, onReviewSubmit }) 
             return;
         }
         // Получаем информацию о пользователе из localStorage
-        // const user = JSON.parse(localStorage.getItem('user'));
         // Создание объекта FormData для отправки формы
         const formDataToSend = new FormData();
         formDataToSend.append("rating", formData.rating);
@@ -48,7 +47,7 @@ const ReviewForm = ({ establishmentID, isAuthenticated, user, onReviewSubmit }) 
         formDataToSend.append("establishmentID", establishmentID);
         formDataToSend.append("userID", user.userID);
 
-        // Добавляем изображение в FormData, если оно было выбрано
+        // Добавляем изображение в FormData, если оно было прикреплено
         if (formData.picture) {
             formDataToSend.append("picture", formData.picture);
         }

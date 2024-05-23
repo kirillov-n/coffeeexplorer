@@ -18,23 +18,18 @@ function App() {
         // Проверяем наличие токена доступа в localStorage при загрузке приложения
         const accessToken = localStorage.getItem('accessToken');
         if (accessToken) {
-            // Устанавливаем статус аутентификации как true, если токен доступа есть
             setIsAuthenticated(true);
         }
-    }, []); // Выполняем только при первом рендере компонента
+    }, []);
 
     const handleLogout = () => {
-        // Реализуйте вашу логику выхода из аккаунта здесь
         setIsAuthenticated(false);
-        // Очистите localStorage
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
     };
 
     const handleLogin = (accessToken) => {
-        // Реализуйте вашу логику входа здесь
         setIsAuthenticated(true);
-        // Сохраняем токен доступа в localStorage
         localStorage.setItem('accessToken', accessToken);
     };
 
@@ -60,7 +55,6 @@ function App() {
                         {!isAuthenticated && <Route path="/signin" element={<SigninForm onLogin={handleLogin} />} />}
                         {!isAuthenticated && <Route path="/signup" element={<SignupForm />} />}
                         {isAuthenticated && <Route path="/profile" element={<UserProfile />} />}
-                        {/* Редирект на главную страницу, если пользователь не аутентифицирован */}
                         {!isAuthenticated && <Route path="/*" element={<Navigate to="/" />} />}
                     </Routes>
                 </BrowserRouter>

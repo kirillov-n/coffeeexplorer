@@ -11,7 +11,7 @@ const ReviewList = ({ establishmentID }) => {
             try {
                 const response = await fetch(`${API_URL}users/posts/?establishment=${establishmentID}`);
                 if (!response.ok) {
-                    throw new Error('Failed to fetch reviews');
+                    throw new Error('Ошибка в получении данных отзывов');
                 }
                 const data = await response.json();
                 // Сортируем отзывы по убыванию даты создания
@@ -19,7 +19,7 @@ const ReviewList = ({ establishmentID }) => {
                 setReviews(sortedReviews);
                 setLoading(false);
             } catch (error) {
-                console.error('Error fetching reviews:', error);
+                console.error('Ошибка в получении данных отзывов:', error);
             }
         };
 

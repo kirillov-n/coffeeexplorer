@@ -17,7 +17,7 @@ const App = () => {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [userID, setUserID] = useState(null);
   const [filterByLocation, setFilterByLocation] = useState(false);
-  const [radius, setRadius] = useState(5000); // Радиус в метрах, по умолчанию 5 км
+  const [radius, setRadius] = useState(1000); // Радиус в метрах, по умолчанию 5 км
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -223,12 +223,12 @@ const App = () => {
             {userLocation && (
               <Placemark
                 geometry={userLocation.coordinates}
+                properties={{
+                  iconContent: 'Я',
+                }}
                 options={{
                   preset: 'islands#circleIcon',
                   iconColor: '#ab806c',
-                }}
-                properties={{
-                  iconContent: 'Я',
                 }}
               />
             )}

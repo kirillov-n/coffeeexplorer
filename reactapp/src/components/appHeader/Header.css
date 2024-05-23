@@ -15,7 +15,9 @@
 .text {
   float: left;
   color: #8A6552; /* Основной текст */
+  text-align: left;
 }
+
 
 .main-button {
   color: #AB806C; /* Основной акцент */

@@ -162,10 +162,6 @@
   background: #755d52; /* Цвет ползунка при наведении */
 }
 
-#radius-slider::-moz-range-thumb:hover {
-  background: #755d52; /* Цвет ползунка при наведении */
-}
-
 .recommendation-card {
   flex-grow: 1;
   display: flex;
