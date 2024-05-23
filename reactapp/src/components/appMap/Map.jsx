@@ -16,6 +16,7 @@ const App = () => {
   const [recommendations, setRecommendations] = useState([]);
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [userID, setUserID] = useState(null);
+  const [filterByLocation, setFilterByLocation] = useState(false);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -33,7 +34,6 @@ const App = () => {
           setIsAuthorized(true);
           setUserID(response.data.userID);
           setRecommendations(response.data.recommendations || []);
-          
         }
       } catch (error) {
         console.error('Ошибка при проверке авторизации:', error);
@@ -42,7 +42,6 @@ const App = () => {
 
     fetchUserProfile();
   }, []);
-
 
   useEffect(() => {
     const fetchRecEstablishmentsData = async () => {
@@ -137,14 +136,39 @@ const App = () => {
     })),
   };
 
+  const toggleFilterByLocation = () => {
+    setFilterByLocation(prev => !prev);
+  };
+
+  const getFilteredRecEstablishments = () => {
+    if (!filterByLocation || !userLocation) return recEstablishments;
+  
+    // Фильтрация заведений по расстоянию (например, в радиусе 5 км)
+    const RADIUS = 1 * 1000; // 5 км в метрах
+    const filtered = recEstablishments.filter(est => {
+      const [lat1, lon1] = userLocation.coordinates;
+      const lat2 = est.address.latitude;
+      const lon2 = est.address.longitude;
+  
+      const distance = Math.sqrt((lat2 - lat1) ** 2 + (lon2 - lon1) ** 2) * 111320; // примитивное вычисление расстояния в метрах
+      return distance <= RADIUS;
+    });
+  
+    return filtered;
+  };
+  
+
   return (
     <YMaps query={{ apikey: process.env.REACT_APP_YANDEX_MAPS_API_KEY, suggest_apikey: process.env.REACT_APP_YANDEX_MAPS_SUGGEST_API_KEY }}>
       <div className="page-container">
           {isAuthorized && Array.isArray(recommendations) && recommendations.length > 0 && (
           <div className="recommendations-container">
             <h1>Вам должно понравиться</h1>
+            <button onClick={toggleFilterByLocation}>
+              {filterByLocation ? "Не учитывать местоположение" : "Учитывать местоположение"}
+            </button>
             <div className="recommendations-container-recs">
-              {recEstablishments.map(est => (
+              {getFilteredRecEstablishments().map(est => (
                 <div key={est.establishmentID} className="recommendation-card">
                   <img src={est.picture} alt={est.name} className="recommendation-image" />
                   <div className="recommendation-info">

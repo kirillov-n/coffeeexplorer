@@ -90,6 +90,17 @@
   text-align: center;
 }
 
+.recommendations-container button {
+  padding: 10px;
+  background-color: #AB806C;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
 .recommendations-container-recs{
   width: 40vh;
   height: calc(100vh - 15vh);
