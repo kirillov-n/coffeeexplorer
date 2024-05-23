@@ -142,21 +142,20 @@ const App = () => {
 
   const getFilteredRecEstablishments = () => {
     if (!filterByLocation || !userLocation) return recEstablishments;
-  
+
     // Фильтрация заведений по расстоянию (например, в радиусе 5 км)
-    const RADIUS = 1 * 1000; // 5 км в метрах
+    const RADIUS = 5 * 1000; // 5 км в метрах
     const filtered = recEstablishments.filter(est => {
       const [lat1, lon1] = userLocation.coordinates;
       const lat2 = est.address.latitude;
       const lon2 = est.address.longitude;
-  
+
       const distance = Math.sqrt((lat2 - lat1) ** 2 + (lon2 - lon1) ** 2) * 111320; // примитивное вычисление расстояния в метрах
       return distance <= RADIUS;
     });
-  
+
     return filtered;
   };
-  
 
   return (
     <YMaps query={{ apikey: process.env.REACT_APP_YANDEX_MAPS_API_KEY, suggest_apikey: process.env.REACT_APP_YANDEX_MAPS_SUGGEST_API_KEY }}>
@@ -164,7 +163,7 @@ const App = () => {
           {isAuthorized && Array.isArray(recommendations) && recommendations.length > 0 && (
           <div className="recommendations-container">
             <h1>Вам должно понравиться</h1>
-            <button onClick={toggleFilterByLocation}>
+            <button className="location-toggle-btn" onClick={toggleFilterByLocation}>
               {filterByLocation ? "Не учитывать местоположение" : "Учитывать местоположение"}
             </button>
             <div className="recommendations-container-recs">

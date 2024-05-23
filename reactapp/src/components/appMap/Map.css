@@ -80,6 +80,10 @@
   padding: 10px;
   background-color: none;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 .recommendations-container-recs::-webkit-scrollbar {
   display: none;
@@ -90,24 +94,31 @@
   text-align: center;
 }
 
-.recommendations-container button {
-  padding: 10px;
-  background-color: #AB806C;
+.location-toggle-btn {
+  background-color: #ab806c;
   color: #fff;
   border: none;
+  padding: 10px 20px;
   border-radius: 5px;
-  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 16px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
 }
 
-.recommendations-container-recs{
-  width: 40vh;
-  height: calc(100vh - 15vh);
-  padding: 10px;
-  box-sizing: border-box;
-  overflow-y: auto;
-  background-color: none;
+.location-toggle-btn:hover {
+  background-color: #8b614e;
+}
+
+.location-toggle-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(171, 128, 108, 0.5);
+}
+
+.recommendations-container-recs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .recommendation-card {
