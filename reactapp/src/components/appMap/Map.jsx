@@ -17,6 +17,7 @@ const App = () => {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [userID, setUserID] = useState(null);
   const [filterByLocation, setFilterByLocation] = useState(false);
+  const [radius, setRadius] = useState(5000); // Радиус в метрах, по умолчанию 5 км
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -45,22 +46,22 @@ const App = () => {
 
   useEffect(() => {
     const fetchRecEstablishmentsData = async () => {
-        try {
-            const recEstablishmentData = await Promise.all(recommendations.map(async (id) => {
-                const response = await fetch(`${API_URL}coffeeexplorer_app/establishments/${id}/`);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch rec establishment data');
-                }
-                return response.json();
-            }));
-            setRecEstablishments(recEstablishmentData);
-        } catch (error) {
-            console.error('Error fetching rec establishment data:', error);
-        }
+      try {
+        const recEstablishmentData = await Promise.all(recommendations.map(async (id) => {
+          const response = await fetch(`${API_URL}coffeeexplorer_app/establishments/${id}/`);
+          if (!response.ok) {
+            throw new Error('Failed to fetch rec establishment data');
+          }
+          return response.json();
+        }));
+        setRecEstablishments(recEstablishmentData);
+      } catch (error) {
+        console.error('Error fetching rec establishment data:', error);
+      }
     };
 
     fetchRecEstablishmentsData();
-}, [recommendations]);
+  }, [recommendations]);
 
   useEffect(() => {
     // Получение данных об установленных кофейнях
@@ -81,7 +82,7 @@ const App = () => {
       })
       .catch(error => console.error('Ошибка:', error));
   }, []);
-  
+
   const handleGeolocationClick = () => {
     setGeolocationClicked(true);
     console.log("Кнопка геолокации нажата");
@@ -140,18 +141,20 @@ const App = () => {
     setFilterByLocation(prev => !prev);
   };
 
+  const handleRadiusChange = (event) => {
+    setRadius(event.target.value * 1000); // Конвертируем километры в метры
+  };
+
   const getFilteredRecEstablishments = () => {
     if (!filterByLocation || !userLocation) return recEstablishments;
 
-    // Фильтрация заведений по расстоянию (например, в радиусе 5 км)
-    const RADIUS = 5 * 1000; // 5 км в метрах
     const filtered = recEstablishments.filter(est => {
       const [lat1, lon1] = userLocation.coordinates;
       const lat2 = est.address.latitude;
       const lon2 = est.address.longitude;
 
       const distance = Math.sqrt((lat2 - lat1) ** 2 + (lon2 - lon1) ** 2) * 111320; // примитивное вычисление расстояния в метрах
-      return distance <= RADIUS;
+      return distance <= radius;
     });
 
     return filtered;
@@ -160,12 +163,26 @@ const App = () => {
   return (
     <YMaps query={{ apikey: process.env.REACT_APP_YANDEX_MAPS_API_KEY, suggest_apikey: process.env.REACT_APP_YANDEX_MAPS_SUGGEST_API_KEY }}>
       <div className="page-container">
-          {isAuthorized && Array.isArray(recommendations) && recommendations.length > 0 && (
+        {isAuthorized && Array.isArray(recommendations) && recommendations.length > 0 && (
           <div className="recommendations-container">
             <h1>Вам должно понравиться</h1>
             <button className="location-toggle-btn" onClick={toggleFilterByLocation}>
               {filterByLocation ? "Не учитывать местоположение" : "Учитывать местоположение"}
             </button>
+            {filterByLocation && (
+              <div className="radius-slider-container">
+                <label htmlFor="radius-slider">Радиус: {radius / 1000} км</label>
+                <input
+                  id="radius-slider"
+                  type="range"
+                  min="0.5"
+                  max="10"
+                  step="0.5"
+                  value={radius / 1000}
+                  onChange={handleRadiusChange}
+                />
+              </div>
+            )}
             <div className="recommendations-container-recs">
               {getFilteredRecEstablishments().map(est => (
                 <div key={est.establishmentID} className="recommendation-card">
@@ -176,7 +193,7 @@ const App = () => {
                     <a href={`/details/${est.establishmentID}`} className="details-link">Подробнее</a>
                   </div>
                 </div>
-            ))}
+              ))}
             </div>
           </div>
         )}
@@ -204,15 +221,15 @@ const App = () => {
               onClick={handleGeolocationClick}
             />
             {userLocation && (
-              <Placemark 
-                geometry={userLocation.coordinates} 
+              <Placemark
+                geometry={userLocation.coordinates}
                 options={{
                   preset: 'islands#circleIcon',
                   iconColor: '#ab806c',
                 }}
                 properties={{
                   iconContent: 'Я',
-                }} 
+                }}
               />
             )}
             <ObjectManager
@@ -227,7 +244,7 @@ const App = () => {
                 iconImageHref: coffeeIcon,
                 iconImageSize: [30, 30],
                 iconImageOffset: [-5, -5],
-              }}          
+              }}
               clusters={{
                 preset: "islands#brownClusterIcons",
               }}
