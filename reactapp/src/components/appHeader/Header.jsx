@@ -14,8 +14,8 @@ const Header = ({ isAuthenticated, onLogout }) => {
     return (
         <div className="header-container">
             <div className="text">
-                <h1>
-                    <Link to="/" className="main-button">Coffee Explorer</Link>
+                <h1 className="text-name">
+                    <Link to="/" className="main-button"><p className="button-text">Coffee Explorer</p></Link>
                 </h1>
             </div>
             <button className="profile-button" onClick={toggleMenu}>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { API_URL } from "../../index";
-import './Signup.css'; // Подключаем файл стилей
+import './Signup.css';
 import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
@@ -14,7 +14,7 @@ const SignupForm = () => {
         occupation: '',
         password: '',
     });
-    const [error, setError] = useState(null); // Состояние для отслеживания ошибок регистрации
+    const [error, setError] = useState(null);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,12 +25,10 @@ const SignupForm = () => {
         e.preventDefault();
         try {
             const response = await axios.post(API_URL + "users/signup/", formData);
-            console.log('User registered successfully:', response.data);
-            // Устанавливаем флаг успешной регистрации
+            console.log('Пользователь успешно зарегестрирован:', response.data);
             navigate('/signin');
         } catch (error) {
             console.error('Registration failed:', error.response.data);
-            // Устанавливаем сообщение об ошибке
             setError('Ошибка регистрации. Пожалуйста, проверьте введенные данные.');
         }
     };
@@ -39,7 +37,7 @@ const SignupForm = () => {
         <div className="signup-form-container">
             <div className="signup-form">
                 <h2>Регистрация</h2>
-                {error && <div className="error-message">{error}</div>} {/* Отображение сообщения об ошибке */}
+                {error && <div className="error-message">{error}</div>}
                 <form onSubmit={handleSubmit}>
                     <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Электронная почта" required autoComplete="email" />
                     <input type="text" name="nickname" value={formData.nickname} onChange={handleChange} placeholder="Никнейм" required autoComplete="nickname" />

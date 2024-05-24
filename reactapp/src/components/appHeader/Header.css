@@ -18,6 +18,10 @@
   text-align: left;
 }
 
+.text-name {
+  text-align: left;
+}
+
 
 .main-button {
   color: #AB806C; /* Основной акцент */
@@ -25,10 +29,17 @@
   border: none;
   cursor: pointer;
   margin-left: 5vh;
+  text-align: left;
+}
+
+.button-text {
+  padding: 0;
+  margin: 0;
+  float: left;
 }
 
 .profile-button img {
-  margin-right: 5vh;
+  margin: auto;
   width: 40px;
   height: 40px;
   display: block;

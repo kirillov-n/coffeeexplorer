@@ -17,7 +17,7 @@ const App = () => {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [userID, setUserID] = useState(null);
   const [filterByLocation, setFilterByLocation] = useState(false);
-  const [radius, setRadius] = useState(1000); // Радиус в метрах, по умолчанию 5 км
+  const [radius, setRadius] = useState(1000); // Радиус в метрах
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -50,13 +50,13 @@ const App = () => {
         const recEstablishmentData = await Promise.all(recommendations.map(async (id) => {
           const response = await fetch(`${API_URL}coffeeexplorer_app/establishments/${id}/`);
           if (!response.ok) {
-            throw new Error('Failed to fetch rec establishment data');
+            throw new Error('Ошибка при получении данных о рекомендациях');
           }
           return response.json();
         }));
         setRecEstablishments(recEstablishmentData);
       } catch (error) {
-        console.error('Error fetching rec establishment data:', error);
+        console.error('Ошибка при получении данных о рекомендациях:', error);
       }
     };
 
@@ -64,7 +64,6 @@ const App = () => {
   }, [recommendations]);
 
   useEffect(() => {
-    // Получение данных об установленных кофейнях
     axios.get(`${API_URL}coffeeexplorer_app/establishments/`)
       .then(response => {
         const formattedData = response.data.map(establishment => ({
@@ -153,7 +152,7 @@ const App = () => {
       const lat2 = est.address.latitude;
       const lon2 = est.address.longitude;
 
-      const distance = Math.sqrt((lat2 - lat1) ** 2 + (lon2 - lon1) ** 2) * 111320; // примитивное вычисление расстояния в метрах
+      const distance = Math.sqrt((lat2 - lat1) ** 2 + (lon2 - lon1) ** 2) * 111320; // Вычисление расстояния в метрах
       return distance <= radius;
     });
 
@@ -165,7 +164,7 @@ const App = () => {
       <div className="page-container">
         {isAuthorized && Array.isArray(recommendations) && recommendations.length > 0 && (
           <div className="recommendations-container">
-            <h1>Вам должно понравиться</h1>
+            <h1 className="recommendations-container-title">Вам должно понравиться</h1>
             <button className="location-toggle-btn" onClick={toggleFilterByLocation}>
               {filterByLocation ? "Не учитывать местоположение" : "Учитывать местоположение"}
             </button>
@@ -188,8 +187,8 @@ const App = () => {
                 <div key={est.establishmentID} className="recommendation-card">
                   <img src={est.picture} alt={est.name} className="recommendation-image" />
                   <div className="recommendation-info">
-                    <h3>{est.name}</h3>
-                    <p>{est.description}</p>
+                    <h3 className="recommendation-info-name">{est.name}</h3>
+                    <p className="recommendation-info-desc">{est.description}</p>
                     <a href={`/details/${est.establishmentID}`} className="details-link">Подробнее</a>
                   </div>
                 </div>

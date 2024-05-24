@@ -169,7 +169,7 @@ const Details = () => {
                 </div>
                 <div className="info">
                     <img src={establishment.picture} alt={establishment.name} className="main-establishment-image" />
-                    <div>
+                    <div style={{width:100+"%"}}>
                         <p className="establishment-description">{establishment.description}</p>
                         <p className="address-details">
                             {establishment.address.city.name}, ст. метро {establishment.address.metro_station.name},{" "}

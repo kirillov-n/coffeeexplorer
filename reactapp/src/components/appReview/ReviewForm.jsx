@@ -99,7 +99,7 @@ const ReviewForm = ({ establishmentID, isAuthenticated, user, onReviewSubmit }) 
                     placeholder="Опишите плюсы и минусы"
                 ></textarea>
             </div>
-            <button type="submit">Отправить</button>
+            <button type="submit" className="submit-button">Отправить</button>
         </form>
     );
 };

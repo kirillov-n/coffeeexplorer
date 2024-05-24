@@ -1,10 +1,8 @@
 .review-form {
-    max-width: 100%;
-    margin: 0 auto;
+    width: 100%;
     padding: 20px;
     border-radius: 10px;
     background-color: #f9f4ef; /* Светло-серый (вторичный фон) */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
 }
@@ -26,6 +24,7 @@
     margin-bottom: 5px;
     font-weight: bold;
     color: #8A6552; /* Темно-коричневый (текст) */
+    width: 100%;
 }
 
 .form-group input[type="number"],
@@ -38,41 +37,27 @@
     border: none;
 }
 
-.form-group-file {
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-.form-group-file label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #8A6552; /* Темно-коричневый (текст) */
-}
-
-.form-group-file input[type="file"] {
-    width: 100%;
-    padding: 5px;
-    font-size: 1rem;
-    border-radius: 5px;
-}
-
 .form-group textarea {
     resize: vertical;
 }
 
-.review-form button[type="submit"] {
+.submit-button {
     width: 100%;
     padding: 10px;
     background-color: #AB806C; /* Коричневый (основной акцент) */
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.review-form button[type="submit"]:hover {
+.submit-button:hover {
     background-color: #8A6552; /* Темно-коричневый (текст) */
+}
+
+.review-form-container {
+    flex-direction: row;
+    justify-content: space-between;
 }

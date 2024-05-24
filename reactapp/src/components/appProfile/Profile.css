@@ -1,5 +1,5 @@
 .user-profile {
-    max-width: 600px;
+    width: 100%;
     margin: 0 auto;
     padding: 20px;
   }
@@ -7,7 +7,9 @@
   .profile-title {
     font-size: 24px;
     margin-bottom: 20px;
+    margin-top: 40px;
     color: #8A6552; /* Темно-коричневый (текст) */
+    text-align: left;
   }
   
   .greeting {

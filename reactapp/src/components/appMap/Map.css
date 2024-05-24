@@ -17,7 +17,7 @@
 .balloon-content {
   max-width: 500px;
   background-color: #ffffff; /* Светлый фон для всплывающего окна */
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
 }
 
@@ -51,20 +51,21 @@
 }
 
 .balloon-content__btn {
-  display: inline-block;
+  /* display: inline-block; */
   margin-bottom: 20px;
   padding: 10px 20px;
   background-color: #AB806C; /* Основной акцентный цвет */
   color: #fff;
   text-decoration: none;
   border: none;
-  border-radius: 10px;
+  border-radius: 50px;
   cursor: pointer;
+  float: right;
 }
 
 [class*="-balloon"] {
   background-color: #ffffff;
-  border-radius: 6px;
+  border-radius: 10px;
 }
 
 .page-container {
@@ -90,10 +91,19 @@
   display: none;
 }
 
-.recommendations-container h1{
+.recommendations-container-title {
+  width: 100%;
   color:#755d52;
   font-size: 14pt;
-  text-align: center;
+  text-align: left;
+}
+
+.recommendation-info-name {
+  text-align: left;
+}
+
+.recommendation-info-desc{
+  text-align: left;
 }
 
 .location-toggle-btn {
@@ -101,14 +111,13 @@
   background-color: #ab806c;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 10px 10px;
+  border-radius: 50px;
   cursor: pointer;
   font-size: 14px;
-  margin: 10px 0;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  transition: background-color 0.3s ease;
+  margin: 10px 0 20px 0;
+  /* transition: background-color 0.3s ease; */
+  float: right;
 }
 
 .location-toggle-btn:hover {
@@ -153,7 +162,7 @@
   appearance: none;
   width: 20px;
   height: 20px;
-  border-radius: 50%;
+  border-radius: 50px;
   background: #8b614e; /* Цвет ползунка */
   cursor: pointer;
 }
@@ -197,15 +206,16 @@
 }
 
 .details-link {
-  display: inline-block;
+  /* display: inline-block; */
   margin-top: 10px;
   padding: 5px 10px;
   background-color: #AB806C; /* Основной акцентный цвет */
   color: #fff;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 50px;
   cursor: pointer;
   text-align: center;
+  float: right
 }
 
 .details-link:hover {

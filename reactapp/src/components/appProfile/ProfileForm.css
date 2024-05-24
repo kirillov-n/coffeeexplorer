@@ -1,5 +1,5 @@
 .profile-form-container {
-  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
   background-color: #ffffff;
@@ -7,7 +7,7 @@
 }
 
 .profile-form-container h2{
-  text-align: center;
+  text-align: left;
   margin-bottom: 20px;
   color: #8A6552; /* Темно-коричневый (текст) */
 }
@@ -30,6 +30,10 @@ label {
   color: #8A6552; /* Темно-коричневый (текст) */
 }
 
+.title-checkboxes {
+  text-align: left;
+}
+
 .form-group input[type="text"],
 .form-group input[type="email"],
 select {
@@ -45,9 +49,10 @@ select {
   background-color: #AB806C;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 50px;
   cursor: pointer;
   width: 100%;
+  float: center;
 }
 
 .form-group button[type="submit"]:hover {

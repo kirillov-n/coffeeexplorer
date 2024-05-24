@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { API_URL } from "../../index";
 import { useNavigate } from 'react-router-dom';
-import './Signin.css'; // Подключаем файл стилей
+import './Signin.css';
 
 const SigninForm = ({ onLogin }) => {
   const [formData, setFormData] = useState({
@@ -20,20 +20,12 @@ const SigninForm = ({ onLogin }) => {
     e.preventDefault();
     try {
       const response = await axios.post(API_URL + "users/signin/", formData);
-      console.log('Login successful:', response.data);
-
-      // Вызов функции входа с передачей токена доступа
+      console.log('Авторизация прошла успешно:', response.data);
       onLogin(response.data.access);
-
-      // Перенаправление на главную страницу
       navigate('/');
-
-      // Cохраняем токен обновления в localStorage
       localStorage.setItem('refreshToken', response.data.refresh);
-
     } catch (error) {
-      console.error('Login failed:', error.response.data);
-      // Обработка ошибки входа
+      console.error('Ошибка авторизации:', error.response.data);
       setError('Неправильный пароль или email');
     }
   };

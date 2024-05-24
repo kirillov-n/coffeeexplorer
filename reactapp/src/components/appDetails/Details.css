@@ -28,6 +28,7 @@
 .info {
   display: flex;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .main-establishment-image {
@@ -131,91 +132,30 @@
 }
 
 .review-form-container {
-  display: flex;
+  width: 100%;  
+  display: block;
   flex-direction: column;
-  margin-left: -20px;
   margin-bottom: 20px;
+  /* padding: 20px; */
 }
 
-.review-form {
-  max-width: 400px;
-  margin-bottom: 20px;
+.review-list-header {
+  font-size: 24px;
+  margin-left: 10px;
+  color: #8A6552; /* Основной тёмный текст */
 }
 
-.review-form h2 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #8A6552;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-group input[type="number"],
-.form-group textarea,
-.form-group input[type="file"],
-.form-group label {
-  width: 100%;
-}
-
-.form-group textarea {
-  resize: vertical;
-}
-
-.review-form button[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  background-color: #AB806C;
-  color: #fff;
+.favorite-button {
+  align-self: flex-start;
+  background: none;
   border: none;
-  border-radius: 5px;
-  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.review-form button[type="submit"]:hover {
-  background-color: #8A6552;
-}
-
-@media screen and (min-width: 600px) {
-  .review-form-container {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .review-form {
-    width: calc(50% - 10px);
-  }
-
-  .review-form:last-child {
-    margin-left: 20px;
-  }
-}
-
-  .review-list {
-    margin-left: -10px;
-    margin-top: -15px;
-  }
-
-  .review-list-header {
-    font-size: 24px;
-    margin-left: 10px;
-    color: #8A6552; /* Основной тёмный текст */
-  }
-
-  .favorite-button {
-    align-self: flex-start;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin-left: 5px;
-    align-items: center;
+  padding: 0;
+  margin-left: 5px;
+  align-items: center;
 }
 
 .favorite-icon {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }

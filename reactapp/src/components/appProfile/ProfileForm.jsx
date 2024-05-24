@@ -20,6 +20,7 @@ const ProfileForm = ({ userProfile, onUpdate }) => {
     non_coffee_drink: userProfile.non_coffee_drink || false,
     decaf: userProfile.decaf || false,
     wifi: userProfile.wifi || false,
+    specialty_coffee: userProfile.specialty_coffee || false,
     place_for_work: userProfile.place_for_work || false,
   });
   const [formErrors, setFormErrors] = useState({});
@@ -39,7 +40,6 @@ const ProfileForm = ({ userProfile, onUpdate }) => {
     if (!formData.nickname) {
       errors.nickname = 'Никнейм обязателен для заполнения';
     }
-    // Добавим валидацию других полей по необходимости
     return errors;
   };
 
@@ -105,11 +105,15 @@ const ProfileForm = ({ userProfile, onUpdate }) => {
           <input type="number" id="avg_bill" name="avg_bill" value={formData.avg_bill} onChange={handleChange} placeholder="Сколько вы готовы потратить?"/>
         </div>
         <div className="form-group">
-          <p>Что про тебя или нужно тебе в кофейне</p>
+          <p className="title-checkboxes">Что про тебя или нужно тебе в кофейне</p>
         </div>
         <div className="form-group checkbox-group">
           <label htmlFor="veg_positions">Я веган</label>
           <input type="checkbox" id="veg_positions" name="veg_positions" checked={formData.veg_positions} onChange={handleChange} />
+        </div>
+        <div className="form-group checkbox-group">
+          <label htmlFor="specialty_coffee">Пью спешалти</label>
+          <input type="checkbox" id="specialty_coffee" name="specialty_coffee" checked={formData.specialty_coffee} onChange={handleChange} />
         </div>
         <div className="form-group checkbox-group">
           <label htmlFor="alt_brewing">Альтернативное заваривание</label>
