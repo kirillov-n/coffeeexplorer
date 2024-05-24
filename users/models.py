@@ -42,6 +42,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     decaf = models.BooleanField(null=True, blank=True,verbose_name="Нужен ли декаф")
     wifi = models.BooleanField(null=True, blank=True,verbose_name="Нужен ли wifi")
     place_for_work = models.BooleanField(null=True, blank=True,verbose_name="Нужны ли места для работы")
+    specialty_coffee = models.BooleanField(null=True, blank=True,verbose_name="Нужен ли specialty кофе")
     recommendations = ArrayField(models.IntegerField(), null=True, blank=True, verbose_name="Рекомендации заведений")
 
     USERNAME_FIELD = "email"
