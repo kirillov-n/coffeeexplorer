@@ -17,7 +17,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         "RW": "Работаю на удаленке",
         "NRW": "Работаю",
         "OAR": "Отдыхаю"
-
     }
     userID = models.BigAutoField(verbose_name="Id пользователя", primary_key=True, unique=True)
     email = models.EmailField(verbose_name="Email адрес", unique=True)
@@ -31,7 +30,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     # Далее поля для рекомендаций
-    avg_bill = models.FloatField(verbose_name="Допустимый средний чек")
+    avg_bill = models.FloatField(null=True, blank=True, verbose_name="Допустимый средний чек")
     veg_positions = models.BooleanField(null=True, blank=True,verbose_name="Нужны ли вегетарианские позиции?")
     alt_brewing = models.BooleanField(null=True, blank=True,verbose_name="Нужны ли альтернативные способы заваривания?")
     alt_milk = models.BooleanField(null=True, blank=True,verbose_name="Нужно ли альтернативное молоко")

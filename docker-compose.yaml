@@ -1,0 +1,74 @@
+# Поднимаем два сервиса, django И node
+services:
+  django:
+    #говорим что build будет из dockerfile который располагается ./
+    build: ./
+    # имя контейнера
+    container_name: djangoapp
+    # перезапускать контейнер при завершении выполнения работы или при аварийном завершении
+    restart: always
+    # проброс портов внутрь контейнера, 8000 порт на хост машине будет проброшен внутрь контейнера на такой же 8000 порт
+    ports:
+      - 8000:8000
+    # команда при старте контейнера
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+    networks:
+      - myNetwork
+    # Для статики мы подключаем два volume (чтобы при перезапуске наши данные не пропадали)), создадим их ниже.
+    volumes:
+      - ./:/usr/src/app/
+      - django_static_volume:/usr/src/app/static
+      - django_media_volume:/usr/src/app/media
+    depends_on:
+      - postgres
+    env_file:
+      - ./djangoProject/.env
+  node:
+    # Аналогично, build из ./reactapp/dockerfile
+    build: ./reactapp
+    # имя контейнера
+    container_name: reactapp
+    # рестарт
+    restart: always
+    # порты
+    ports:
+      - 3000:3000
+    # команда при запуске
+    command: npm start
+    # Зависимость. нет смысла ноде, если некому отдать ей данные. поэтому сначала стартуем сервис django, а за ней node
+    depends_on:
+      - django
+    networks:
+      - myNetwork
+    volumes:
+      - ./reactapp/public/:/usr/src/app/public/
+      - ./reactapp/src/:/usr/src/app/src/
+    env_file:
+      - ./reactapp/.env
+    stdin_open: true
+  
+  postgres:
+    # Так же разворачиваем с готового контейнера
+    image: postgres:16.1-alpine
+    container_name: postgresdb
+    ports:
+      - 5435:5432
+    networks:
+      - myNetwork
+    # Чтобы наши данные не пропадали при перезапуске подключим volume
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data/
+    # Переменные окружения. их надо будет передавать в django.
+    env_file:
+      - ./djangoProject/.env
+
+# создаём два volume для статики
+volumes:
+  postgres_volume:
+  django_static_volume:
+  django_media_volume:
+
+networks:
+  myNetwork:
+    driver: bridge
