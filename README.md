@@ -3,9 +3,10 @@
 
 ## Главная страница
 <p align="center">
-  <img src="screenshots\main.png?raw=true" style="border-radius: 10px;" />
+  <img src="screenshots\main.png?raw=true" />
 </p>
+
 ## Страница заведения
 <p align="center">
-  <img src="screenshots\details.png?raw=true" style="border-radius: 10px;"/>
+  <img src="screenshots\details.png?raw=true"/>
 </p>
