@@ -1,12 +1,12 @@
-# coffeeexplorer
+# Coffee Explorer
 Приложение для поиска и выбора кофеен
 
-## Главная страница
+### Главная страница
 <p align="center">
   <img src="screenshots\main.png?raw=true" />
 </p>
 
-## Страница заведения
+### Страница заведения
 <p align="center">
   <img src="screenshots\details.png?raw=true"/>
 </p>
