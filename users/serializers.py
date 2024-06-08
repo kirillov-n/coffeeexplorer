@@ -43,6 +43,7 @@ class UserProfileSerializer(serializers.Serializer):
     decaf = serializers.BooleanField()
     wifi = serializers.BooleanField()
     place_for_work = serializers.BooleanField()
+    specialty_coffee = serializers.BooleanField()
     recommendations = serializers.ListField(
         child=serializers.IntegerField()  # Тип элементов массива
     )
@@ -60,7 +61,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         recommendations = serializers.ListField(
         child=serializers.IntegerField()
     )
-        fields = ["userID", "email", "nickname", "sex", "birthdate", "occupation", "is_business", "password", "date_joined", "favourites", "avg_bill", "veg_positions", "alt_brewing", "alt_milk", "small_pets", "big_pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work", "recommendations"]
+        fields = ["userID", "email", "nickname", "sex", "birthdate", "occupation", "is_business", "password", "date_joined", "favourites", "avg_bill", "veg_positions", "alt_brewing", "alt_milk", "small_pets", "big_pets", "food", "non_coffee_drink", "decaf", "wifi", "place_for_work", "specialty_coffee", "recommendations"]
     def create(self, validated_data):
         user = User(
             email=validated_data['email'],

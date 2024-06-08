@@ -124,11 +124,11 @@ const ProfileForm = ({ userProfile, onUpdate }) => {
           <input type="checkbox" id="alt_milk" name="alt_milk" checked={formData.alt_milk} onChange={handleChange} />
         </div>
         <div className="form-group checkbox-group">
-          <label htmlFor="small_pets">Маленькая собака</label>
+          <label htmlFor="small_pets">Есть маленькая собака</label>
           <input type="checkbox" id="small_pets" name="small_pets" checked={formData.small_pets} onChange={handleChange} />
         </div>
         <div className="form-group checkbox-group">
-          <label htmlFor="big_pets">Большая собака</label>
+          <label htmlFor="big_pets">Есть большая собака</label>
           <input type="checkbox" id="big_pets" name="big_pets" checked={formData.big_pets} onChange={handleChange} />
         </div>
         <div className="form-group checkbox-group">
@@ -136,7 +136,7 @@ const ProfileForm = ({ userProfile, onUpdate }) => {
           <input type="checkbox" id="food" name="food" checked={formData.food} onChange={handleChange} />
         </div>
         <div className="form-group checkbox-group">
-          <label htmlFor="non_coffee_drink">Не кофейные напитки</label>
+          <label htmlFor="non_coffee_drink">Не пью кофе</label>
           <input type="checkbox" id="non_coffee_drink" name="non_coffee_drink" checked={formData.non_coffee_drink} onChange={handleChange} />
         </div>
         <div className="form-group checkbox-group">
@@ -148,7 +148,7 @@ const ProfileForm = ({ userProfile, onUpdate }) => {
           <input type="checkbox" id="wifi" name="wifi" checked={formData.wifi} onChange={handleChange} />
         </div>
         <div className="form-group checkbox-group">
-          <label htmlFor="place_for_work">Поработать</label>
+          <label htmlFor="place_for_work">Нужно поработать</label>
           <input type="checkbox" id="place_for_work" name="place_for_work" checked={formData.place_for_work} onChange={handleChange} />
         </div>
         <div className="form-group">

@@ -152,7 +152,7 @@ const App = () => {
       const lat2 = est.address.latitude;
       const lon2 = est.address.longitude;
 
-      const distance = Math.sqrt((lat2 - lat1) ** 2 + (lon2 - lon1) ** 2) * 111320; // Вычисление расстояния в метрах
+      const distance = Math.sqrt(((lat2 - lat1) * 111320) ** 2 + ((lon2 - lon1) * 55800) ** 2);
       return distance <= radius;
     });
 
