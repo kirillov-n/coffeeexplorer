@@ -19,25 +19,13 @@
 
 Создать .env файл в корне проекта со следующим содержимым:
 
-    POSTGRES_NAME=
-    POSTGRES_USER=
-    POSTGRES_PASSWORD=
+    POSTGRES_NAME=<НАЗВАНИЕ_БД>
+    POSTGRES_USER=<ИМЯ_ПОЛЬЗОВАТЕЛЯ>
+    POSTGRES_PASSWORD=<ПАРОЛЬ>
 
 Поднять проект с помощью Docker
 
     docker-compose up -d
 
-В контейнере djangoapp выполнить команды:
 
-    python manage.py makemigrations
-    python manage.py migrate
-
-Затем необходимо заполнить таблицу заведений
-
-    ...
-
-После этого можно создать суперпользователя
-
-    python manage.py createsuperuser
-
-*Запущенный сервер доступен по адресу 127.0.0.1:8000*
+*Запущенный сервер доступен по адресу 127.0.0.1:3000*
