@@ -22,10 +22,11 @@
     POSTGRES_NAME=<НАЗВАНИЕ_БД>
     POSTGRES_USER=<ИМЯ_ПОЛЬЗОВАТЕЛЯ>
     POSTGRES_PASSWORD=<ПАРОЛЬ>
+    POSTGRES_DB=<ИМЯ_БД>
 
 Поднять проект с помощью Docker
 
     docker-compose up -d
 
 
-*Запущенный сервер доступен по адресу 127.0.0.1:3000*
+*Запущенный сервер доступен по адресу http://localhost:3000/*
